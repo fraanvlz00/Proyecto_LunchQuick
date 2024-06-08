@@ -8,6 +8,7 @@ public class Dia {
     private Menu ejecutivo;
     private Menu baes;
 
+    // Getters y setters
     public Menu getVegetariano() {
         return vegetariano;
     }
