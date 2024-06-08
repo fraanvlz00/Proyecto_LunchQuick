@@ -10,8 +10,9 @@ public class Menu {
 	private String[] ensalada;
 	private String[] postre;
 	private String[] sopa;
-	private String[] acompanamiento;
+	private String[] acompañamiento;
 
+	// Getters y setters
 	public int getPrecio() {
 		return precio;
 	}
@@ -60,12 +61,12 @@ public class Menu {
 		this.sopa = sopa;
 	}
 
-	public String[] getAcompanamiento() {
-		return acompanamiento;
+	public String[] getAcompañamiento() {
+		return acompañamiento;
 	}
 
-	public void setAcompanamiento(String[] acompanamiento) {
-		this.acompanamiento = acompanamiento;
+	public void setAcompañamiento(String[] acompañamiento) {
+		this.acompañamiento = acompañamiento;
 	}
 
 	public static Menu fromJsonNode(JsonNode node) {
@@ -77,7 +78,7 @@ public class Menu {
 			menu.setEnsalada(loadArray(node.get("ensalada")));
 			menu.setPostre(loadArray(node.get("postre")));
 			menu.setSopa(loadArray(node.get("sopa")));
-			menu.setAcompanamiento(loadArray(node.get("acompanamiento")));
+			menu.setAcompañamiento(loadArray(node.get("acompañamiento")));
 		}
 		return menu;
 	}
@@ -92,6 +93,6 @@ public class Menu {
 			}
 			return array;
 		}
-		return new String[0];
+		return null;
 	}
 }

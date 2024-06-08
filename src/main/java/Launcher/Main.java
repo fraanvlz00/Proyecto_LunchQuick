@@ -1,20 +1,19 @@
 package Launcher;
 
-import Dominio.ServicioAlmuerzo;
-import Dominio.ServicioUsuarios;
 import Dominio.Usuario;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
-            Usuario usuario = servicioUsuarios.iniciarSesion();
-            if (usuario != null) {
-                ServicioAlmuerzo servicioAlmuerzo = new ServicioAlmuerzo(servicioUsuarios);
-                servicioAlmuerzo.iniciar(usuario);
+            Usuario usuario = new Usuario();
+            Usuario usuarioLogueado = usuario.iniciarSesion();
+            if (usuarioLogueado != null) {
+                // Lógica adicional después del inicio de sesión exitoso
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error al iniciar sesión: " + e.getMessage());
         }
     }
 }
+
