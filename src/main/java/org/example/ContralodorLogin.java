@@ -48,15 +48,26 @@ public class ContralodorLogin {
     private void guardarUsuarios() {
         try {
             objectMapper.writeValue(new File(FILE_PATH), usuarios);
+            System.out.println("Usuarios guardados exitosamente.");
         } catch (IOException e) {
+            System.err.println("Error al guardar usuarios: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     private void cargarUsuarios() {
-        try {
-            usuarios = objectMapper.readValue(new File(FILE_PATH), new TypeReference<List<Persona>>() {});
-        } catch (IOException e) {
+        File file = new File(FILE_PATH);
+        if (file.exists()) {
+            try {
+                usuarios = objectMapper.readValue(file, new TypeReference<List<Persona>>() {});
+                System.out.println("Usuarios cargados exitosamente.");
+            } catch (IOException e) {
+                System.err.println("Error al cargar usuarios: " + e.getMessage());
+                e.printStackTrace();
+                usuarios = new ArrayList<>();
+            }
+        } else {
+            System.out.println("Archivo no encontrado, iniciando con una lista vacía.");
             usuarios = new ArrayList<>();
         }
     }

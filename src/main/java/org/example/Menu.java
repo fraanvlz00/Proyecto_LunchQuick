@@ -19,7 +19,7 @@ public class Menu {
             System.out.println("3. Salir");
             System.out.print("Elige una opción: ");
             opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
