@@ -1,45 +1,39 @@
 package Dominio;
-import Launcher.Main;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class Usuario {
-    private String nombre;
     private String correoElectronico;
-    private String contrasena;
-    private String rol;
+    private String contraseña;
     private String almuerzoComprado;
     private JsonNode root;
     private ObjectMapper mapper;
 
-    public Usuario(String nombre, String correoElectronico, String contrasena, String rol){
-        this.nombre = nombre;
+    // Constructor para inicializar el objeto Usuario
+    public Usuario(String correoElectronico, String contraseña, String almuerzoComprado) {
         this.correoElectronico = correoElectronico;
-        this.contrasena = contrasena;
-        this.rol = rol;
+        this.contraseña = contraseña;
+        this.almuerzoComprado = almuerzoComprado;
     }
+
+    // Constructor para inicializar el JSON y el ObjectMapper
     public Usuario() throws IOException {
         mapper = new ObjectMapper();
-        ClassLoader classLoader = Main.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("datos/usuarios.json");
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("Datos/usuarios.json");
         if (inputStream == null) {
             throw new IOException("Archivo JSON no encontrado en el classpath");
         }
         root = mapper.readTree(inputStream);
     }
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    // Getters y setters
     public String getCorreoElectronico() {
         return correoElectronico;
     }
@@ -48,21 +42,14 @@ public class Usuario {
         this.correoElectronico = correoElectronico;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
     public String getAlmuerzoComprado() {
         return almuerzoComprado;
     }
@@ -70,34 +57,33 @@ public class Usuario {
     public void setAlmuerzoComprado(String almuerzoComprado) {
         this.almuerzoComprado = almuerzoComprado;
     }
+
+    // Método para iniciar sesión
     public Usuario iniciarSesion() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese su correo electrónico: ");
         String correo = scanner.nextLine();
         System.out.println("Ingrese su contraseña: ");
-        String clave = scanner.nextLine();
+        String contraseña = scanner.nextLine();
 
-        Iterator<JsonNode> usuarios = root.get("usuarios").elements();
-        while (usuarios.hasNext()) {
-            JsonNode usuarioNode = usuarios.next();
-            if (usuarioNode.get("correoElectronico").asText().equals(correo) &&
-                    usuarioNode.get("contraseña").asText().equals(clave)) {
-                try {
-                    Usuario usuario = new Usuario();
+        try {
+            Iterator<JsonNode> usuarios = root.get("usuarios").elements();
+            while (usuarios.hasNext()) {
+                JsonNode usuarioNode = usuarios.next();
+                if (usuarioNode.get("correoElectronico").asText().equals(correo) &&
+                        usuarioNode.get("contraseña").asText().equals(contraseña)) {
+                    Usuario usuario = new Usuario(correo, contraseña, "");
                     usuario.setCorreoElectronico(correo);
-                    usuario.setContrasena(clave);
+                    usuario.setContraseña(contraseña);
                     System.out.println("Inicio de sesión exitoso.");
                     return usuario;
-                } catch (IOException e) {
-                    System.out.println("Error al leer el archivo JSON: " + e.getMessage());
-                    return null;
                 }
             }
+        } catch (Exception e) {
+            System.out.println("Error al procesar el inicio de sesión: " + e.getMessage());
         }
 
         System.out.println("Correo electrónico o contraseña incorrectos.");
         return null;
     }
-
-
 }

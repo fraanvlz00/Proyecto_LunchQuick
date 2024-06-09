@@ -16,7 +16,7 @@ public class ServicioPedidos {
 	public ServicioPedidos() throws IOException {
 		mapper = new ObjectMapper();
 		ClassLoader classLoader = Main.class.getClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("datos/menu.json");
+		InputStream inputStream = classLoader.getResourceAsStream("Datos/menu.json");
 		if (inputStream == null) {
 			throw new IOException("Archivo JSON no encontrado en el classpath");
 		}
