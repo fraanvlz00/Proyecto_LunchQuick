@@ -5,6 +5,7 @@ public class Persona {
     private String password;
     private String username;
 
+    // Constructor sin argumentos necesario para Jackson
     public Persona() {}
 
     public Persona(String username, String email, String password) {
