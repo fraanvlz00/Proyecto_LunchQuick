@@ -59,7 +59,8 @@ public class ContralodorLogin {
         File file = new File(FILE_PATH);
         if (file.exists()) {
             try {
-                usuarios = objectMapper.readValue(file, new TypeReference<List<Persona>>() {});
+                usuarios = objectMapper.readValue(file, new TypeReference<List<Persona>>() {
+                });
                 System.out.println("Usuarios cargados exitosamente.");
             } catch (IOException e) {
                 System.err.println("Error al cargar usuarios: " + e.getMessage());
