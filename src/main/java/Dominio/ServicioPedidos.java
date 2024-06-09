@@ -23,9 +23,11 @@ public class ServicioPedidos {
 		root = mapper.readTree(inputStream);
 		scanner = new Scanner(System.in);
 	}
+
 	public void iniciar(Usuario usuario) {
 		System.out.println("Bienvenido, " + usuario.getCorreoElectronico());
 
+		// Validar día
 		String dia;
 		while (true) {
 			System.out.println("Ingrese el día (lunes, martes, miércoles, jueves, viernes): ");
@@ -39,6 +41,7 @@ public class ServicioPedidos {
 
 		JsonNode diaNode = root.get("dias").get(dia);
 
+		// Validar tipo de menú
 		String tipoMenu;
 		Menu menu = null;
 		while (true) {
@@ -65,6 +68,7 @@ public class ServicioPedidos {
 			break;
 		}
 
+		// Seleccionar opciones de menú
 		String almuerzoComprado = selectOption("bebestibles", menu.getBebestibles())
 				+ ", " + selectOption("plato de fondo", menu.getPlatoDeFondo())
 				+ ", " + selectOption("ensalada", menu.getEnsalada())
@@ -78,20 +82,21 @@ public class ServicioPedidos {
 		System.out.println("Precio total: $" + menu.getPrecio());
 	}
 
-
 	private String selectOption(String category, String[] options) {
 		if (options != null && options.length > 0) {
-			System.out.println("Seleccione " + category + ": ");
-			for (int i = 0; i < options.length; i++) {
-				System.out.println((i + 1) + ". " + options[i]);
-			}
-			int choice = scanner.nextInt();
-			scanner.nextLine();  // Consumir nueva línea
-			if (choice > 0 && choice <= options.length) {
-				System.out.println("Usted ha seleccionado: " + options[choice - 1] + " para " + category);
-				return options[choice - 1];
-			} else {
-				System.out.println("Selección no válida para " + category);
+			while (true) {
+				System.out.println("Seleccione " + category + ": ");
+				for (int i = 0; i < options.length; i++) {
+					System.out.println((i + 1) + ". " + options[i]);
+				}
+				int choice = scanner.nextInt();
+				scanner.nextLine();  // Consumir nueva línea
+				if (choice > 0 && choice <= options.length) {
+					System.out.println("Usted ha seleccionado: " + options[choice - 1] + " para " + category);
+					return options[choice - 1];
+				} else {
+					System.out.println("Selección no válida para " + category + ". Por favor, inténtelo de nuevo.");
+				}
 			}
 		}
 		return "";
