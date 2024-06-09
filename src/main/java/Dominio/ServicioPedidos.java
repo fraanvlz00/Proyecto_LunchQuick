@@ -3,7 +3,9 @@ package Dominio;
 import Launcher.Main;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.InputMismatchException;
@@ -81,6 +83,13 @@ public class ServicioPedidos {
 		System.out.println("Cliente: " + usuario.getCorreoElectronico());
 		System.out.println("Almuerzo comprado: " + usuario.getAlmuerzoComprado());
 		System.out.println("Precio total: $" + menu.getPrecio());
+
+		// Actualizar JSON
+		try {
+			actualizarJson(usuario);
+		} catch (IOException e) {
+			System.out.println("Error al actualizar el archivo JSON: " + e.getMessage());
+		}
 	}
 
 	private String selectOption(String category, String[] options) {
@@ -106,5 +115,22 @@ public class ServicioPedidos {
 			}
 		}
 		return "";
+	}
+
+	private void actualizarJson(Usuario usuario) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		ClassLoader classLoader = Main.class.getClassLoader();
+		File jsonFile = new File(classLoader.getResource("Datos/usuarios.json").getFile());
+		JsonNode root = mapper.readTree(jsonFile);
+
+		JsonNode usuariosNode = root.get("usuarios");
+		for (JsonNode usuarioNode : usuariosNode) {
+			if (usuarioNode.get("correoElectronico").asText().equals(usuario.getCorreoElectronico())) {
+				ArrayNode almuerzosCompradosNode = (ArrayNode) usuarioNode.withArray("almuerzosComprados");
+				almuerzosCompradosNode.add(usuario.getAlmuerzoComprado());
+				break;
+			}
+		}
+		mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
 	}
 }
