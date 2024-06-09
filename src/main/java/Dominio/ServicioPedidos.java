@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ServicioPedidos {
@@ -89,13 +90,18 @@ public class ServicioPedidos {
 				for (int i = 0; i < options.length; i++) {
 					System.out.println((i + 1) + ". " + options[i]);
 				}
-				int choice = scanner.nextInt();
-				scanner.nextLine();  // Consumir nueva línea
-				if (choice > 0 && choice <= options.length) {
-					System.out.println("Usted ha seleccionado: " + options[choice - 1] + " para " + category);
-					return options[choice - 1];
-				} else {
-					System.out.println("Selección no válida para " + category + ". Por favor, inténtelo de nuevo.");
+				try {
+					int choice = scanner.nextInt();
+					scanner.nextLine();  // Consumir nueva línea
+					if (choice > 0 && choice <= options.length) {
+						System.out.println("Usted ha seleccionado: " + options[choice - 1] + " para " + category);
+						return options[choice - 1];
+					} else {
+						System.out.println("Selección no válida para " + category + ". Por favor, inténtelo de nuevo.");
+					}
+				} catch (InputMismatchException e) {
+					System.out.println("Entrada no válida. Por favor, ingrese un número.");
+					scanner.nextLine();  // Consumir la entrada inválida
 				}
 			}
 		}
