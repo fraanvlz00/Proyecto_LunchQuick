@@ -73,8 +73,6 @@ public class Usuario {
                 if (usuarioNode.get("correoElectronico").asText().equals(correo) &&
                         usuarioNode.get("contraseña").asText().equals(contraseña)) {
                     Usuario usuario = new Usuario(correo, contraseña, "");
-                    usuario.setCorreoElectronico(correo);
-                    usuario.setContraseña(contraseña);
                     System.out.println("Inicio de sesión exitoso.");
                     return usuario;
                 }
@@ -87,3 +85,4 @@ public class Usuario {
         return null;
     }
 }
+
