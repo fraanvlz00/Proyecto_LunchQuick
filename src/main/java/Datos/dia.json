@@ -1,0 +1,19 @@
+{
+  "dia": {
+    "lunes": {
+      "almuerzosComprados": {}
+    },
+    "martes": {
+      "almuerzosComprados": {}
+    },
+    "miercoles": {
+      "almuerzosComprados": {}
+    },
+    "jueves": {
+      "almuerzosComprados": {}
+    },
+    "viernes": {
+      "almuerzosComprados": {}
+    }
+  }
+}
