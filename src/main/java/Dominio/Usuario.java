@@ -3,8 +3,8 @@ package Dominio;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -25,12 +25,11 @@ public class Usuario {
     // Constructor para inicializar el JSON y el ObjectMapper
     public Usuario() throws IOException {
         mapper = new ObjectMapper();
-        ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("Datos/usuarios.json");
-        if (inputStream == null) {
-            throw new IOException("Archivo JSON no encontrado en el classpath");
+        File jsonFile = new File("src/main/java/Datos/usuarios.json");
+        if (!jsonFile.exists()) {
+            throw new IOException("Archivo JSON no encontrado en la ruta especificada: " + jsonFile.getAbsolutePath());
         }
-        root = mapper.readTree(inputStream);
+        root = mapper.readTree(jsonFile);
     }
 
     // Getters y setters
@@ -85,4 +84,3 @@ public class Usuario {
         return null;
     }
 }
-
