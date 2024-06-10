@@ -2,24 +2,24 @@ package org.example;
 import java.util.*;
 
 public class MenuDelDia {
-    public final Map<Integer, String> menu;
-    public final Map<String, Double> precios;
-    public final List<String> carrito;
+    private final Map<Integer, String> menu;
+    private final Map<String, Double> precios;
+    private final List<String> carrito;
 
     public MenuDelDia() {
-        menu = Map.of(
+        this.menu = Map.of(
                 1, "Menú BAES básico",
                 2, "Menú BAES mejorado",
                 3, "Menú vegano"
         );
 
-        precios = Map.of(
+        this.precios = Map.of(
                 "Menú BAES básico", 1600.0,
                 "Menú BAES mejorado", 1800.0,
                 "Menú vegano", 2800.0
         );
 
-        carrito = new ArrayList<>();
+        this.carrito = new ArrayList<>();
     }
 
     public void mostrarMenuDia() {
