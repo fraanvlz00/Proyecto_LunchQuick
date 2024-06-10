@@ -4,10 +4,13 @@ import Launcher.Main;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ServicioPedidos {
@@ -126,11 +129,36 @@ public class ServicioPedidos {
 		JsonNode usuariosNode = root.get("usuarios");
 		for (JsonNode usuarioNode : usuariosNode) {
 			if (usuarioNode.get("correoElectronico").asText().equals(usuario.getCorreoElectronico())) {
-				ArrayNode almuerzosCompradosNode = (ArrayNode) usuarioNode.withArray("almuerzosComprados");
-				almuerzosCompradosNode.add(usuario.getAlmuerzoComprado());
+				ObjectNode almuerzosCompradosNode = (ObjectNode) usuarioNode.get("almuerzosComprados");
+				if (almuerzosCompradosNode == null) {
+					almuerzosCompradosNode = mapper.createObjectNode();
+					((ObjectNode) usuarioNode).set("almuerzosComprados", almuerzosCompradosNode);
+				}
+
+				// Contar el número de almuerzos existentes
+				int numAlmuerzos = 0;
+				Iterator<Map.Entry<String, JsonNode>> fields = almuerzosCompradosNode.fields();
+				while (fields.hasNext()) {
+					Map.Entry<String, JsonNode> field = fields.next();
+					int currentNum = Integer.parseInt(field.getKey());
+					if (currentNum > numAlmuerzos) {
+						numAlmuerzos = currentNum;
+					}
+				}
+
+				// Crear un nuevo array para el almuerzo con un número de almuerzo
+				ArrayNode nuevoAlmuerzo = mapper.createArrayNode();
+				String[] detallesAlmuerzo = usuario.getAlmuerzoComprado().split(", ");
+				for (String detalle : detallesAlmuerzo) {
+					nuevoAlmuerzo.add(detalle);
+				}
+
+				// Añadir el nuevo almuerzo al nodo de almuerzos comprados
+				almuerzosCompradosNode.set(String.valueOf(numAlmuerzos + 1), nuevoAlmuerzo);
 				break;
 			}
 		}
 		mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
 	}
 }
+

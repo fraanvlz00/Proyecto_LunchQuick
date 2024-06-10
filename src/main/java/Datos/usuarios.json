@@ -2,22 +2,25 @@
   "usuarios" : [ {
     "correoElectronico" : "fran",
     "contraseña" : "12345",
-    "almuerzosComprados" : [ "fanta, papas con carne, lechuga, flan, , " ]
+    "almuerzosComprados" : {
+      "1" : [ "fanta", "papas con carne", "lechuga", "flan" ],
+      "2" : [ "fanta", "papas con carne", "lechuga", "flan" ]
+    }
   }, {
     "correoElectronico" : "maria.garcia@example.com",
     "contraseña" : "securepass456",
-    "almuerzosComprados" : [ ]
+    "almuerzosComprados" : { }
   }, {
     "correoElectronico" : "carlos.rodriguez@example.com",
     "contraseña" : "mypassword789",
-    "almuerzosComprados" : [ ]
+    "almuerzosComprados" : { }
   }, {
     "correoElectronico" : "ana.martinez@example.com",
     "contraseña" : "ana_secure123",
-    "almuerzosComprados" : [ ]
+    "almuerzosComprados" : { }
   }, {
     "correoElectronico" : "luis.fernandez@example.com",
     "contraseña" : "luispass456",
-    "almuerzosComprados" : [ ]
+    "almuerzosComprados" : { }
   } ]
 }
