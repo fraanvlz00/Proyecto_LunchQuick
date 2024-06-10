@@ -5,6 +5,10 @@
         "1" : {
           "detalles" : [ "fanta", "papas con carne", "lechuga", "flan" ],
           "correoElectronico" : "fran"
+        },
+        "2" : {
+          "detalles" : [ "fanta", "papas con carne", "lechuga", "flan", "sopa de verduras", "pan" ],
+          "correoElectronico" : "fran"
         }
       }
     },

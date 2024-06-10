@@ -125,11 +125,12 @@ public class ServicioPedidos {
 
 		// Verificar pago antes de actualizar los JSON
 		if (pagos.verificarPago(rut, codigoPago)) {
-			System.out.println("Pago verificado. Procediendo con la actualización de JSON.");
+			System.out.println("Pago verificado.");
 			// Actualizar JSON de usuarios y días
 			try {
+				int numeroAsignado = actualizarJsonDia(dia, usuario);
 				actualizarJsonUsuario(usuario);
-				actualizarJsonDia(dia, usuario);
+				System.out.println("El numero de retiro de su almuerzo es: " + numeroAsignado);
 			} catch (IOException e) {
 				System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
 			}
@@ -202,12 +203,12 @@ public class ServicioPedidos {
 		mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFileUsuarios, rootUsuarios);
 	}
 
-	private void actualizarJsonDia(String dia, Usuario usuario) throws IOException {
+	private int actualizarJsonDia(String dia, Usuario usuario) throws IOException {
 		File jsonFileDias = new File("src/main/java/Datos/dia.json");
 		JsonNode diaNode = rootDias.get("dia").get(dia);
 		if (diaNode == null) {
 			System.out.println("El nodo para el día " + dia + " no existe.");
-			return;
+			return -1;
 		}
 		ObjectNode almuerzosCompradosNode = (ObjectNode) diaNode.get("almuerzosComprados");
 		if (almuerzosCompradosNode == null) {
@@ -236,8 +237,11 @@ public class ServicioPedidos {
 		nuevoAlmuerzo.put("correoElectronico", usuario.getCorreoElectronico());
 
 		// Añadir el nuevo almuerzo al nodo de almuerzos comprados
-		almuerzosCompradosNode.set(String.valueOf(numAlmuerzos + 1), nuevoAlmuerzo);
+		int numeroAsignado = numAlmuerzos + 1;
+		almuerzosCompradosNode.set(String.valueOf(numeroAsignado), nuevoAlmuerzo);
 
 		mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFileDias, rootDias);
+
+		return numeroAsignado;
 	}
 }
