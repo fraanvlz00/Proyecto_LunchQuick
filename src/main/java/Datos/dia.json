@@ -1,19 +1,24 @@
 {
-  "dia": {
-    "lunes": {
-      "almuerzosComprados": {}
+  "dia" : {
+    "lunes" : {
+      "almuerzosComprados" : {
+        "1" : {
+          "detalles" : [ "fanta", "papas con carne", "lechuga", "flan" ],
+          "correoElectronico" : "fran"
+        }
+      }
     },
-    "martes": {
-      "almuerzosComprados": {}
+    "martes" : {
+      "almuerzosComprados" : { }
     },
-    "miercoles": {
-      "almuerzosComprados": {}
+    "miercoles" : {
+      "almuerzosComprados" : { }
     },
-    "jueves": {
-      "almuerzosComprados": {}
+    "jueves" : {
+      "almuerzosComprados" : { }
     },
-    "viernes": {
-      "almuerzosComprados": {}
+    "viernes" : {
+      "almuerzosComprados" : { }
     }
   }
 }

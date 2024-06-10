@@ -3,8 +3,10 @@
     "correoElectronico" : "fran",
     "contraseña" : "12345",
     "almuerzosComprados" : {
-      "1" : [ "fanta", "papas con carne", "lechuga", "flan" ],
-      "2" : [ "fanta", "papas con carne", "lechuga", "flan" ]
+      "1" : {
+        "detalles" : [ "fanta", "papas con carne", "lechuga", "flan" ],
+        "correoElectronico" : "fran"
+      }
     }
   }, {
     "correoElectronico" : "maria.garcia@example.com",
