@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,12 +17,11 @@ public class ServicioPedidos {
 
 	public ServicioPedidos() throws IOException {
 		mapper = new ObjectMapper();
-		ClassLoader classLoader = Main.class.getClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("Datos/menu.json");
-		if (inputStream == null) {
-			throw new IOException("Archivo JSON no encontrado en el classpath");
+		File jsonFile = new File("src/main/java/Datos/menu.json");
+		if (!jsonFile.exists()) {
+			throw new IOException("Archivo JSON no encontrado en la ruta especificada: " + jsonFile.getAbsolutePath());
 		}
-		root = mapper.readTree(inputStream);
+		root = mapper.readTree(jsonFile);
 		scanner = new Scanner(System.in);
 	}
 
@@ -119,8 +117,10 @@ public class ServicioPedidos {
 
 	private void actualizarJson(Usuario usuario) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		ClassLoader classLoader = Main.class.getClassLoader();
-		File jsonFile = new File(classLoader.getResource("Datos/usuarios.json").getFile());
+		File jsonFile = new File("src/main/java/Datos/usuarios.json");
+		if (!jsonFile.exists()) {
+			throw new IOException("Archivo JSON no encontrado en la ruta especificada: " + jsonFile.getAbsolutePath());
+		}
 		JsonNode root = mapper.readTree(jsonFile);
 
 		JsonNode usuariosNode = root.get("usuarios");
