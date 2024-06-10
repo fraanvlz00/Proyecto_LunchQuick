@@ -18,9 +18,11 @@ public class ServicioPedidos {
 	private JsonNode rootDias;
 	private ObjectMapper mapper;
 	private Scanner scanner;
+	private Pagos pagos;
 
 	public ServicioPedidos() {
 		mapper = new ObjectMapper();
+		pagos = new Pagos(); // Inicializar la clase de pagos
 
 		try {
 			// Cargar JSON de usuarios
@@ -70,12 +72,9 @@ public class ServicioPedidos {
 			return;
 		}
 
-		// Debugging: Imprimir el nodo del día
-
-
+		// Cargar JSON de menús
 		JsonNode menusNode = null;
 		try {
-			// Cargar JSON de menús
 			File jsonFileMenus = new File("src/main/java/Datos/menu.json");
 			if (!jsonFileMenus.exists()) {
 				throw new IOException("Archivo JSON de menús no encontrado en la ruta especificada: " + jsonFileMenus.getAbsolutePath());
@@ -118,12 +117,24 @@ public class ServicioPedidos {
 		System.out.println("Almuerzo comprado: " + usuario.getAlmuerzoComprado());
 		System.out.println("Precio total: $" + menu.getPrecio());
 
-		// Actualizar JSON de usuarios y días
-		try {
-			actualizarJsonUsuario(usuario);
-			actualizarJsonDia(dia, usuario);
-		} catch (IOException e) {
-			System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
+		// Solicitar el RUT y el código de pago
+		System.out.println("Ingrese el RUT: ");
+		String rut = scanner.nextLine();
+		System.out.println("Ingrese el código de pago: ");
+		String codigoPago = scanner.nextLine();
+
+		// Verificar pago antes de actualizar los JSON
+		if (pagos.verificarPago(rut, codigoPago)) {
+			System.out.println("Pago verificado. Procediendo con la actualización de JSON.");
+			// Actualizar JSON de usuarios y días
+			try {
+				actualizarJsonUsuario(usuario);
+				actualizarJsonDia(dia, usuario);
+			} catch (IOException e) {
+				System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
+			}
+		} else {
+			System.out.println("Pago no verificado o no disponible, no se puede agregar el pedido.");
 		}
 	}
 
@@ -230,4 +241,3 @@ public class ServicioPedidos {
 		mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFileDias, rootDias);
 	}
 }
-

@@ -14,6 +14,7 @@ public class Usuario {
     private String almuerzoComprado;
     private JsonNode root;
     private ObjectMapper mapper;
+    private String rut; // Agregar atributo rut
 
     // Constructor para inicializar el objeto Usuario
     public Usuario(String correoElectronico, String contraseña, String almuerzoComprado) {
@@ -57,6 +58,14 @@ public class Usuario {
         this.almuerzoComprado = almuerzoComprado;
     }
 
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
     // Método para iniciar sesión
     public Usuario iniciarSesion() {
         Scanner scanner = new Scanner(System.in);
@@ -69,11 +78,19 @@ public class Usuario {
             Iterator<JsonNode> usuarios = root.get("usuarios").elements();
             while (usuarios.hasNext()) {
                 JsonNode usuarioNode = usuarios.next();
-                if (usuarioNode.get("correoElectronico").asText().equals(correo) &&
-                        usuarioNode.get("contraseña").asText().equals(contraseña)) {
-                    Usuario usuario = new Usuario(correo, contraseña, "");
-                    System.out.println("Inicio de sesión exitoso.");
-                    return usuario;
+
+                if (usuarioNode.has("correoElectronico") && usuarioNode.has("contraseña")) {
+                    String jsonCorreo = usuarioNode.get("correoElectronico").asText();
+                    String jsonContraseña = usuarioNode.get("contraseña").asText();
+
+                    if (jsonCorreo.equals(correo) && jsonContraseña.equals(contraseña)) {
+                        Usuario usuario = new Usuario(correo, contraseña, "");
+                        if (usuarioNode.has("rut")) {
+                            usuario.setRut(usuarioNode.get("rut").asText()); // Obtener el RUT del JSON
+                        }
+                        System.out.println("Inicio de sesión exitoso.");
+                        return usuario;
+                    }
                 }
             }
         } catch (Exception e) {
