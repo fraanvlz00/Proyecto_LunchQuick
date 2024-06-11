@@ -44,130 +44,30 @@ public class ServicioPedidos {
 		scanner = new Scanner(System.in);
 	}
 
-	public void iniciar(Usuario usuario) {
-		System.out.println("Bienvenido, " + usuario.getCorreoElectronico());
-
-		// Validar día
-		String dia;
-		JsonNode diasNode = rootDias.get("dia");
-		if (diasNode == null) {
-			System.out.println("El nodo 'dia' no existe en el JSON.");
-			return;
-		}
-
-		while (true) {
-			System.out.println("Ingrese el día (lunes, martes, miércoles, jueves, viernes): ");
-			dia = scanner.nextLine().toLowerCase();
-			if (diasNode.has(dia)) {
-				break;
-			} else {
-				System.out.println("El día no es válido. Por favor, inténtelo de nuevo.");
-			}
-		}
-
-		JsonNode diaNode = diasNode.get(dia);
-		if (diaNode == null) {
-			System.out.println("El nodo para el día " + dia + " no existe.");
-			return;
-		}
-
-		// Cargar JSON de menús
-		JsonNode menusNode = null;
-		try {
-			File jsonFileMenus = new File("src/main/java/Datos/menu.json");
-			if (!jsonFileMenus.exists()) {
-				throw new IOException("Archivo JSON de menús no encontrado en la ruta especificada: " + jsonFileMenus.getAbsolutePath());
-			}
-			JsonNode rootMenus = mapper.readTree(jsonFileMenus);
-			menusNode = rootMenus.get("dias").get(dia).get("menus");
-			if (menusNode == null) {
-				System.out.println("El nodo 'menus' no existe para el día " + dia + ".");
-				return;
-			}
-		} catch (IOException e) {
-			System.out.println("Error al cargar el archivo de menús: " + e.getMessage());
-			return;
-		}
-
-		// Seleccionar tipo de menú
-		String tipoMenu;
-		Menu menu = null;
-		while (true) {
-			System.out.println("Ingrese el tipo de menú (vegetariano, economico, ejecutivo, baes): ");
-			tipoMenu = scanner.nextLine().toLowerCase();
-			if (menusNode.has(tipoMenu)) {
-				menu = Menu.fromJsonNode(menusNode.get(tipoMenu));
-				break;
-			} else {
-				System.out.println("El tipo de menú no es válido. Por favor, inténtelo de nuevo.");
-			}
-		}
-
-		// Seleccionar opciones de menú
-		String almuerzoComprado = "";
-		if (menu.getBebestibles() != null && menu.getBebestibles().length > 0) {
-			almuerzoComprado += selectOption("bebestibles", menu.getBebestibles()) + ", ";
-		}
-		if (menu.getPlatoDeFondo() != null && menu.getPlatoDeFondo().length > 0) {
-			almuerzoComprado += selectOption("plato de fondo", menu.getPlatoDeFondo()) + ", ";
-		}
-		if (menu.getEnsalada() != null && menu.getEnsalada().length > 0) {
-			almuerzoComprado += selectOption("ensalada", menu.getEnsalada()) + ", ";
-		}
-		if (menu.getPostre() != null && menu.getPostre().length > 0) {
-			almuerzoComprado += selectOption("postre", menu.getPostre()) + ", ";
-		}
-		if (menu.getSopa() != null && menu.getSopa().length > 0) {
-			almuerzoComprado += selectOption("sopa", menu.getSopa()) + ", ";
-		}
-		if (menu.getAcompañamiento() != null && menu.getAcompañamiento().length > 0) {
-			almuerzoComprado += selectOption("acompañamiento", menu.getAcompañamiento()) + ", ";
-		}
-
-		// Eliminar la última coma y espacio
-		if (almuerzoComprado.endsWith(", ")) {
-			almuerzoComprado = almuerzoComprado.substring(0, almuerzoComprado.length() - 2);
-		}
-
-		// Solicitar el RUT y el código de pago
-		System.out.println("Ingrese el RUT: ");
-		String rut = scanner.nextLine();
-		System.out.println("Ingrese el código de pago: ");
-		String codigoPago = scanner.nextLine();
-
-		// Verificar pago antes de agregar al JSON
-		if (pagos.verificarPago(rut, codigoPago)) {
-			System.out.println("Pago verificado.");
-
-			// Actualizar JSON de usuarios y días
-			usuario.agregarAlmuerzoComprado(dia, almuerzoComprado);
-			System.out.println("Cliente: " + usuario.getCorreoElectronico());
-			System.out.println("Almuerzo comprado: " + almuerzoComprado);
-			System.out.println("Precio total: $" + menu.getPrecio());
-
-			try {
-				int numeroAsignado = actualizarJsonDia(dia, usuario);
-				actualizarJsonUsuario(usuario, dia); // Aquí pasamos el día
-				System.out.println("El numero de retiro de su almuerzo es: " + numeroAsignado);
-			} catch (IOException e) {
-				System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
-			}
-		} else {
-			System.out.println("Pago no verificado o no disponible, no se puede agregar el pedido.");
-		}
-	}
-
 	public static void comprarAlmuerzo(Usuario usuario, Pagos pagos) {
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Seleccione el día para comprar almuerzo (lunes, martes, miércoles, jueves, viernes):");
-		String dia = scanner.nextLine().toLowerCase();
+		String dia;
+		while (true) {
+			System.out.println("Seleccione el día para comprar almuerzo (lunes, martes, miércoles, jueves, viernes):");
+			dia = scanner.nextLine().toLowerCase();
+			if (dia.equals("lunes") || dia.equals("martes") || dia.equals("miércoles") || dia.equals("jueves") || dia.equals("viernes")) {
+				break;
+			} else {
+				System.out.println("Día no válido. Por favor, intente de nuevo.");
+			}
+		}
 
-		// Aquí deberías implementar la lógica para mostrar el menú del día seleccionado y permitir que el usuario seleccione su almuerzo.
-		// Para simplificar, vamos a asumir que el usuario selecciona un menú predefinido.
-
-		System.out.println("Seleccione el tipo de menú (vegetariano, economico, ejecutivo, baes):");
-		String tipoMenu = scanner.nextLine().toLowerCase();
+		String tipoMenu;
+		while (true) {
+			System.out.println("Seleccione el tipo de menú (vegetariano, economico, ejecutivo, baes):");
+			tipoMenu = scanner.nextLine().toLowerCase();
+			if (tipoMenu.equals("vegetariano") || tipoMenu.equals("economico") || tipoMenu.equals("ejecutivo") || tipoMenu.equals("baes")) {
+				break;
+			} else {
+				System.out.println("Tipo de menú no válido. Por favor, intente de nuevo.");
+			}
+		}
 
 		// Cargar JSON de menús
 		JsonNode menusNode = null;
@@ -215,6 +115,11 @@ public class ServicioPedidos {
 			almuerzoComprado = almuerzoComprado.substring(0, almuerzoComprado.length() - 2);
 		}
 
+		// Mostrar precio antes de solicitar el RUT y el código de pago
+		System.out.println("Cliente: " + usuario.getCorreoElectronico());
+		System.out.println("Almuerzo en carrito de compras: " + almuerzoComprado);
+		System.out.println("Precio total a pagar: $" + menu.getPrecio());
+
 		// Solicitar el RUT y el código de pago
 		System.out.println("Ingrese el RUT: ");
 		String rut = scanner.nextLine();
@@ -227,17 +132,16 @@ public class ServicioPedidos {
 
 			// Actualizar JSON de usuarios y días
 			usuario.agregarAlmuerzoComprado(dia, almuerzoComprado);
-			System.out.println("Cliente: " + usuario.getCorreoElectronico());
-			System.out.println("Almuerzo comprado: " + almuerzoComprado);
-			System.out.println("Precio total: $" + menu.getPrecio());
 
 			try {
-				new ServicioPedidos().actualizarJsonUsuario(usuario, dia); // Guardar el almuerzo comprado en el JSON
+				int numeroAsignado = new ServicioPedidos().actualizarJsonDia(dia, usuario);
+				new ServicioPedidos().actualizarJsonUsuario(usuario, dia); // Aquí pasamos el día
+				System.out.println("El numero de retiro de su almuerzo es: " + numeroAsignado);
 			} catch (IOException e) {
-				System.out.println("Error al actualizar el archivo JSON de usuarios: " + e.getMessage());
+				System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
 			}
 		} else {
-			System.out.println("Pago no verificado o no disponible, no se puede agregar el pedido.");
+			System.out.println("Pago no verificado o no disponible, no se puede agregar el pedido. (intentelo nuevamente)");
 		}
 	}
 

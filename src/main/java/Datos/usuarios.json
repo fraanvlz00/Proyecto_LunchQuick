@@ -62,6 +62,10 @@
       "1" : {
         "detalles" : [ "fanta", "papas con carne", "lechuga", "flan" ],
         "correoElectronico" : "f.valenzuela12@ufromail.cl"
+      },
+      "2" : {
+        "detalles" : [ "fanta", "papas con tortilla de verduras", "lechuga", "flan", "sopa de verduras", "pan" ],
+        "correoElectronico" : "f.valenzuela12@ufromail.cl"
       }
     }
   } ]
