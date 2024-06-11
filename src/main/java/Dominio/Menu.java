@@ -2,6 +2,7 @@ package Dominio;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class Menu {
 	private int precio;
@@ -11,6 +12,7 @@ public class Menu {
 	private String[] postre;
 	private String[] sopa;
 	private String[] acompañamiento;
+
 
 	// Getters y setters
 	public int getPrecio() {
