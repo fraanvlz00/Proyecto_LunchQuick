@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="merge avance 2">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="funcionando mostrar pedidos comprados por usuario">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Datos/dia.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/dia.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/MenuLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/MenuLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718068394146</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="funcionando mostrar pedidos comprados por usuario">
+      <option name="closed" value="true" />
+      <created>1718077069779</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718077069779</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -186,7 +193,8 @@
     <MESSAGE value="commit3" />
     <MESSAGE value="commit3 fixed" />
     <MESSAGE value="merge avance 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge avance 2" />
+    <MESSAGE value="funcionando mostrar pedidos comprados por usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="funcionando mostrar pedidos comprados por usuario" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
