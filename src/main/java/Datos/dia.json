@@ -3,39 +3,10 @@
     "lunes" : {
       "almuerzosComprados" : {
         "1" : {
-          "detalles" : [ "fanta", "papas con carne", "lechuga", "flan" ],
-          "correoElectronico" : "fran"
-        },
-        "2" : {
-          "detalles" : [ "fanta", "papas con carne", "lechuga", "flan", "sopa de verduras", "pan" ],
-          "correoElectronico" : "fran"
-        },
-        "3" : {
-          "detalles" : [ "fanta", "papas con carne", "lechuga", "flan" ],
-          "correoElectronico" : "f.valenzuela12@ufromail.cl"
-        },
-        "4" : {
-          "detalles" : [ "fanta", "papas con tortilla de verduras", "lechuga", "flan", "sopa de verduras", "pan" ],
-          "correoElectronico" : "f.valenzuela12@ufromail.cl"
+          "detalles" : [ "vegetariano", "ensalada", "postre" ],
+          "correoElectronico" : "test@example.com"
         }
       }
-    },
-    "martes" : {
-      "almuerzosComprados" : { }
-    },
-    "miercoles" : {
-      "almuerzosComprados" : { }
-    },
-    "jueves" : {
-      "almuerzosComprados" : {
-        "1" : {
-          "detalles" : [ "agua", "arroz con pollo", "lechuga", "mousse de chocolate" ],
-          "correoElectronico" : "fran"
-        }
-      }
-    },
-    "viernes" : {
-      "almuerzosComprados" : { }
     }
   }
 }

@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="funcionando mostrar pedidos comprados por usuario">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Datos/dia.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/dia.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Pagos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Pagos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -26,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="avance-2-pruebaUnion" />
+        <entry key="$PROJECT_DIR$" value="avance-2-" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,11 +51,16 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.PagosTest and 2 more.executor": "Run",
+    "JUnit.ServicioPedidosTest.executor": "Run",
+    "JUnit.UsuarioTest.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "fran",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Ignacio/IdeaProjects/Proyecto_LunchQuick",
@@ -74,15 +80,21 @@
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\org\example" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\Datos" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.example" />
       <recent name="org" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Dominio" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.ServicioPedidosTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Launcher.Main" />
       <module name="Proyecto_LunchQuick" />
@@ -96,8 +108,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PagosTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Proyecto_LunchQuick" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="Dominio.PagosTest" />
+        <pattern testClass="Dominio.ServicioPedidosTest" />
+        <pattern testClass="Dominio.UsuarioTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServicioPedidosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Proyecto_LunchQuick" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Dominio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Dominio" />
+      <option name="MAIN_CLASS_NAME" value="Dominio.ServicioPedidosTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsuarioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Proyecto_LunchQuick" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Dominio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Dominio" />
+      <option name="MAIN_CLASS_NAME" value="Dominio.UsuarioTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ServicioPedidosTest" />
+        <item itemvalue="JUnit.UsuarioTest" />
+        <item itemvalue="JUnit.PagosTest and 2 more" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -174,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718077069779</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="funcionando mostrar pedidos comprados por usuario">
+      <option name="closed" value="true" />
+      <created>1718079570492</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1718079570492</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -193,6 +258,7 @@
     <MESSAGE value="commit3" />
     <MESSAGE value="commit3 fixed" />
     <MESSAGE value="merge avance 2" />
+    <MESSAGE value="funcionando mostrar pedidos comprados por usuario con mejoras" />
     <MESSAGE value="funcionando mostrar pedidos comprados por usuario" />
     <option name="LAST_COMMIT_MESSAGE" value="funcionando mostrar pedidos comprados por usuario" />
   </component>

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Pagos {
-    private Map<String, String> pagos;
+    protected Map<String, String> pagos;
 
     public Pagos() {
         pagos = new HashMap<>();
