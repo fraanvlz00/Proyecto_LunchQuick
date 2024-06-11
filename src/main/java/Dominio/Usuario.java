@@ -22,15 +22,19 @@ public class Usuario {
         this.almuerzosComprados = new HashMap<>();
     }
 
-    // Constructor para inicializar el JSON y el ObjectMapper
-    public Usuario() throws IOException {
+    // Constructor para inicializar el JSON y el ObjectMapper con un archivo específico
+    public Usuario(File jsonFile) throws IOException {
         mapper = new ObjectMapper();
-        File jsonFile = new File("src/main/java/Datos/usuarios.json");
         if (!jsonFile.exists()) {
             throw new IOException("Archivo JSON no encontrado en la ruta especificada: " + jsonFile.getAbsolutePath());
         }
         root = mapper.readTree(jsonFile);
         this.almuerzosComprados = new HashMap<>();
+    }
+
+    // Constructor por defecto para usar la ruta estándar
+    public Usuario() throws IOException {
+        this(new File("src/main/java/Datos/usuarios.json"));
     }
 
     // Getters y setters
