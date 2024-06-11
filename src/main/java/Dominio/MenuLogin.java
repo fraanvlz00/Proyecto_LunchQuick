@@ -47,7 +47,10 @@ public class MenuLogin {
     private void iniciarSesion() {
         Usuario usuarioLogueado = controladorLogin.iniciarSesion();
         if (usuarioLogueado != null) {
-            new ServicioPedidos().iniciar(usuarioLogueado);
+            boolean continuar = true;
+            while (continuar) {
+                continuar = controladorLogin.mostrarMenuUsuario(usuarioLogueado);
+            }
         }
     }
 }
