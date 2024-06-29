@@ -28,7 +28,7 @@ public class Pagos {
             }
             String json = sb.toString();
             Gson gson = new Gson();
-            Type pagosListType = new TypeToken<Map<String, List<Map<String, String>>>>(){}.getType();
+            Type pagosListType = new TypeToken<Map<String, List<Map<String, String>>>>() {}.getType();
             Map<String, List<Map<String, String>>> pagosMap = gson.fromJson(json, pagosListType);
             for (Map<String, String> pago : pagosMap.get("pago")) {
                 pagos.put(pago.get("rut"), pago.get("codigo"));

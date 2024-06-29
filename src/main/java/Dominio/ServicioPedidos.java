@@ -4,271 +4,248 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
 public class ServicioPedidos {
 	private JsonNode rootUsuarios;
-	private JsonNode rootDias;  // Asegúrate de que este campo exista
-	private JsonNode rootMenus;  // Asegúrate de que este campo exista
-	private ObjectMapper mapper;
-	private Scanner scanner;
-	private Pagos pagos;
+	private JsonNode rootDias;
+	private JsonNode rootMenus;
+	private final ObjectMapper mapper;
+	private final Scanner scanner;
 
 	public ServicioPedidos() {
 		mapper = new ObjectMapper();
-		pagos = new Pagos(); // Inicializar la clase de pagos
+		scanner = new Scanner(System.in);
+		cargarJson();
+	}
 
+	private void cargarJson() {
 		try {
-			// Cargar JSON de usuarios
-			File jsonFileUsuarios = new File("src/main/java/Datos/usuarios.json");
-			if (!jsonFileUsuarios.exists()) {
-				throw new IOException("Archivo JSON de usuarios no encontrado en la ruta especificada: " + jsonFileUsuarios.getAbsolutePath());
-			}
-			rootUsuarios = mapper.readTree(jsonFileUsuarios);
-
-			// Cargar JSON de días
-			File jsonFileDias = new File("src/main/java/Datos/dia.json");
-			if (!jsonFileDias.exists()) {
-				throw new IOException("Archivo JSON de días no encontrado en la ruta especificada: " + jsonFileDias.getAbsolutePath());
-			}
-			rootDias = mapper.readTree(jsonFileDias);
-
-			// Cargar JSON de menús
-			File jsonFileMenus = new File("src/main/java/Datos/menu.json");
-			if (!jsonFileMenus.exists()) {
-				throw new IOException("Archivo JSON de menús no encontrado en la ruta especificada: " + jsonFileMenus.getAbsolutePath());
-			}
-			rootMenus = mapper.readTree(jsonFileMenus);
+			rootUsuarios = cargarArchivoJson("src/main/java/Datos/usuarios.json");
+			rootDias = cargarArchivoJson("src/main/java/Datos/dia.json");
+			rootMenus = cargarArchivoJson("src/main/java/Datos/menu.json");
 		} catch (IOException e) {
 			System.out.println("Error al cargar los archivos JSON: " + e.getMessage());
 		}
-
-		scanner = new Scanner(System.in);
 	}
 
+	private JsonNode cargarArchivoJson(String rutaArchivo) throws IOException {
+		File archivo = new File(rutaArchivo);
+		if (!archivo.exists()) {
+			throw new IOException("Archivo JSON no encontrado en la ruta especificada: " + archivo.getAbsolutePath());
+		}
+		return mapper.readTree(archivo);
+	}
 
+	public void comprarAlmuerzo(Cliente cliente, Pagos pagos) {
+		String dia = seleccionarDia();
+		String tipoMenu = seleccionarTipoMenu();
 
-public static void comprarAlmuerzo(Usuario usuario, Pagos pagos) {
-		Scanner scanner = new Scanner(System.in);
+		Menu menu = obtenerMenu(dia, tipoMenu);
+		if (menu == null) return;
 
+		String almuerzoComprado = seleccionarDetallesMenu(menu);
+
+		mostrarResumenCompra(cliente, menu, almuerzoComprado);
+		procesarCompra(cliente, pagos, dia, almuerzoComprado, menu.getPrecio());
+	}
+
+	private String seleccionarDia() {
 		String dia;
 		while (true) {
 			System.out.println("Seleccione el día para comprar almuerzo (lunes, martes, miércoles, jueves, viernes):");
 			dia = scanner.nextLine().toLowerCase();
-			if (dia.equals("lunes") || dia.equals("martes") || dia.equals("miércoles") || dia.equals("jueves") || dia.equals("viernes")) {
-				break;
-			} else {
-				System.out.println("Día no válido. Por favor, intente de nuevo.");
-			}
+			if (esDiaValido(dia)) break;
+			System.out.println("Día no válido. Por favor, intente de nuevo.");
 		}
+		return dia;
+	}
 
+	private boolean esDiaValido(String dia) {
+		return dia.equals("lunes") || dia.equals("martes") || dia.equals("miércoles") || dia.equals("jueves") || dia.equals("viernes");
+	}
+
+	private String seleccionarTipoMenu() {
 		String tipoMenu;
 		while (true) {
 			System.out.println("Seleccione el tipo de menú (vegetariano, economico, ejecutivo, baes):");
 			tipoMenu = scanner.nextLine().toLowerCase();
-			if (tipoMenu.equals("vegetariano") || tipoMenu.equals("economico") || tipoMenu.equals("ejecutivo") || tipoMenu.equals("baes")) {
-				break;
-			} else {
-				System.out.println("Tipo de menú no válido. Por favor, intente de nuevo.");
-			}
+			if (esTipoMenuValido(tipoMenu)) break;
+			System.out.println("Tipo de menú no válido. Por favor, intente de nuevo.");
 		}
+		return tipoMenu;
+	}
 
-		// Cargar JSON de menús
-		JsonNode menusNode = null;
+	private boolean esTipoMenuValido(String tipoMenu) {
+		return tipoMenu.equals("vegetariano") || tipoMenu.equals("economico") || tipoMenu.equals("ejecutivo") || tipoMenu.equals("baes");
+	}
+
+	private Menu obtenerMenu(String dia, String tipoMenu) {
+		JsonNode menusNode = cargarMenusDelDia(dia);
+		if (menusNode == null) return null;
+		return Menu.fromJsonNode(menusNode.get(tipoMenu));
+	}
+
+	private JsonNode cargarMenusDelDia(String dia) {
 		try {
-			File jsonFileMenus = new File("src/main/java/Datos/menu.json");
-			if (!jsonFileMenus.exists()) {
-				throw new IOException("Archivo JSON de menús no encontrado en la ruta especificada: " + jsonFileMenus.getAbsolutePath());
-			}
-			JsonNode rootMenus = new ObjectMapper().readTree(jsonFileMenus);
-			menusNode = rootMenus.get("dias").get(dia).get("menus");
-			if (menusNode == null) {
-				System.out.println("El nodo 'menus' no existe para el día " + dia + ".");
-				return;
-			}
-		} catch (IOException e) {
-			System.out.println("Error al cargar el archivo de menús: " + e.getMessage());
-			return;
+			return rootMenus.get("dias").get(dia).get("menus");
+		} catch (Exception e) {
+			System.out.println("Error al cargar los menús para el día: " + e.getMessage());
+			return null;
 		}
+	}
 
-		Menu menu = Menu.fromJsonNode(menusNode.get(tipoMenu));
-
-		// Seleccionar opciones de menú
+	private String seleccionarDetallesMenu(Menu menu) {
 		String almuerzoComprado = "";
-		if (menu.getBebestibles() != null && menu.getBebestibles().length > 0) {
-			almuerzoComprado += selectOption("bebestibles", menu.getBebestibles()) + ", ";
-		}
-		if (menu.getPlatoDeFondo() != null && menu.getPlatoDeFondo().length > 0) {
-			almuerzoComprado += selectOption("plato de fondo", menu.getPlatoDeFondo()) + ", ";
-		}
-		if (menu.getEnsalada() != null && menu.getEnsalada().length > 0) {
-			almuerzoComprado += selectOption("ensalada", menu.getEnsalada()) + ", ";
-		}
-		if (menu.getPostre() != null && menu.getPostre().length > 0) {
-			almuerzoComprado += selectOption("postre", menu.getPostre()) + ", ";
-		}
-		if (menu.getSopa() != null && menu.getSopa().length > 0) {
-			almuerzoComprado += selectOption("sopa", menu.getSopa()) + ", ";
-		}
-		if (menu.getAcompañamiento() != null && menu.getAcompañamiento().length > 0) {
-			almuerzoComprado += selectOption("acompañamiento", menu.getAcompañamiento()) + ", ";
-		}
+		almuerzoComprado += seleccionarOpcionDeMenu("bebestibles", menu.getBebestibles());
+		almuerzoComprado += seleccionarOpcionDeMenu("plato de fondo", menu.getPlatoDeFondo());
+		almuerzoComprado += seleccionarOpcionDeMenu("ensalada", menu.getEnsalada());
+		almuerzoComprado += seleccionarOpcionDeMenu("postre", menu.getPostre());
+		almuerzoComprado += seleccionarOpcionDeMenu("sopa", menu.getSopa());
+		almuerzoComprado += seleccionarOpcionDeMenu("acompañamiento", menu.getAcompañamiento());
 
-		// Eliminar la última coma y espacio
-		if (almuerzoComprado.endsWith(", ")) {
-			almuerzoComprado = almuerzoComprado.substring(0, almuerzoComprado.length() - 2);
-		}
+		return almuerzoComprado.endsWith(", ") ? almuerzoComprado.substring(0, almuerzoComprado.length() - 2) : almuerzoComprado;
+	}
 
-		// Mostrar precio antes de solicitar el RUT y el código de pago
-		System.out.println("Cliente: " + usuario.getCorreoElectronico());
+	private String seleccionarOpcionDeMenu(String categoria, String[] opciones) {
+		if (opciones != null && opciones.length > 0) {
+			return seleccionarOpcion(categoria, opciones) + ", ";
+		}
+		return "";
+	}
+
+	private String seleccionarOpcion(String categoria, String[] opciones) {
+		while (true) {
+			mostrarOpciones(categoria, opciones);
+			int choice = obtenerOpcion();
+			if (esOpcionValida(choice, opciones.length)) {
+				System.out.println("Usted ha seleccionado: " + opciones[choice - 1] + " para " + categoria);
+				return opciones[choice - 1];
+			} else {
+				System.out.println("Selección no válida para " + categoria + ". Por favor, inténtelo de nuevo.");
+			}
+		}
+	}
+
+	private void mostrarOpciones(String categoria, String[] opciones) {
+		System.out.println("Seleccione " + categoria + ": ");
+		for (int i = 0; i < opciones.length; i++) {
+			System.out.println((i + 1) + ". " + opciones[i]);
+		}
+	}
+
+	private int obtenerOpcion() {
+		try {
+			int choice = scanner.nextInt();
+			scanner.nextLine();
+			return choice;
+		} catch (InputMismatchException e) {
+			System.out.println("Entrada no válida. Por favor, ingrese un número.");
+			scanner.nextLine();
+			return -1;
+		}
+	}
+
+	private boolean esOpcionValida(int choice, int numOpciones) {
+		return choice > 0 && choice <= numOpciones;
+	}
+
+	private void mostrarResumenCompra(Cliente cliente, Menu menu, String almuerzoComprado) {
+		System.out.println("Cliente: " + cliente.getCorreoElectronico());
 		System.out.println("Almuerzo en carrito de compras: " + almuerzoComprado);
 		System.out.println("Precio total a pagar: $" + menu.getPrecio());
+	}
 
-		// Solicitar el RUT y el código de pago
-		System.out.println("Ingrese el RUT: ");
-		String rut = scanner.nextLine();
-		System.out.println("Ingrese el código de pago: ");
-		String codigoPago = scanner.nextLine();
+	private void procesarCompra(Cliente cliente, Pagos pagos, String dia, String almuerzoComprado, int precio) {
+		String rut = obtenerEntrada("Ingrese el RUT: ");
+		String codigoPago = obtenerEntrada("Ingrese el código de pago: ");
 
-		// Verificar pago antes de agregar al JSON
 		if (pagos.verificarPago(rut, codigoPago)) {
 			System.out.println("Pago verificado.");
-
-			// Actualizar JSON de usuarios y días
-			usuario.agregarAlmuerzoComprado(dia, almuerzoComprado);
-
+			cliente.agregarAlmuerzoComprado(dia, almuerzoComprado);
 			try {
-				int numeroAsignado = new ServicioPedidos().actualizarJsonDia(dia, usuario);
-				new ServicioPedidos().actualizarJsonUsuario(usuario, dia); // Aquí pasamos el día
-				System.out.println("El numero de retiro de su almuerzo es: " + numeroAsignado);
+				int numeroAsignado = actualizarJsonDia(dia, cliente);
+				actualizarJsonUsuario(cliente, dia);
+				System.out.println("El número de retiro de su almuerzo es: " + numeroAsignado);
 			} catch (IOException e) {
 				System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
 			}
 		} else {
-			System.out.println("Pago no verificado o no disponible, no se puede agregar el pedido. (intentelo nuevamente)");
+			System.out.println("Pago no verificado o no disponible, no se puede agregar el pedido. (inténtelo nuevamente)");
 		}
 	}
 
-	public static void verAlmuerzosComprados(Usuario usuario) {
+	private String obtenerEntrada(String mensaje) {
+		System.out.println(mensaje);
+		return scanner.nextLine();
+	}
+
+	public void verAlmuerzosComprados(Cliente cliente) {
 		try {
-			File jsonFileUsuarios = new File("src/main/java/Datos/usuarios.json");
-			if (!jsonFileUsuarios.exists()) {
-				throw new IOException("Archivo JSON de usuarios no encontrado en la ruta especificada: " + jsonFileUsuarios.getAbsolutePath());
-			}
-
-			ObjectMapper mapper = new ObjectMapper();
-			JsonNode rootUsuarios = mapper.readTree(jsonFileUsuarios);
+			JsonNode rootUsuarios = cargarArchivoJson("src/main/java/Datos/usuarios.json");
 			JsonNode usuariosNode = rootUsuarios.get("usuarios");
-
 			for (JsonNode usuarioNode : usuariosNode) {
-				if (usuarioNode.get("correoElectronico").asText().equals(usuario.getCorreoElectronico())) {
-					JsonNode almuerzosCompradosNode = usuarioNode.get("almuerzosComprados");
-					if (almuerzosCompradosNode != null) {
-						Iterator<Map.Entry<String, JsonNode>> fields = almuerzosCompradosNode.fields();
-						while (fields.hasNext()) {
-							Map.Entry<String, JsonNode> field = fields.next();
-							System.out.println("Día: " + field.getKey());
-							System.out.println("Menú: " + field.getValue().get("detalles"));
-							System.out.println("-----------");
-						}
-					} else {
-						System.out.println("No hay almuerzos comprados.");
-					}
-					break;
+				if (usuarioNode.get("correoElectronico").asText().equals(cliente.getCorreoElectronico())) {
+					mostrarAlmuerzosComprados(usuarioNode);
+					return;
 				}
 			}
+			System.out.println("No hay almuerzos comprados.");
 		} catch (IOException e) {
 			System.out.println("Error al leer el archivo JSON de usuarios: " + e.getMessage());
 		}
 	}
 
-	// Métodos existentes...
-
-	private static String selectOption(String category, String[] options) {
-		Scanner scanner = new Scanner(System.in);
-		if (options != null && options.length > 0) {
-			while (true) {
-				System.out.println("Seleccione " + category + ": ");
-				for (int i = 0; i < options.length; i++) {
-					System.out.println((i + 1) + ". " + options[i]);
-				}
-				try {
-					int choice = scanner.nextInt();
-					scanner.nextLine();  // Consumir nueva línea
-					if (choice > 0 && choice <= options.length) {
-						System.out.println("Usted ha seleccionado: " + options[choice - 1] + " para " + category);
-						return options[choice - 1];
-					} else {
-						System.out.println("Selección no válida para " + category + ". Por favor, inténtelo de nuevo.");
-					}
-				} catch (InputMismatchException e) {
-					System.out.println("Entrada no válida. Por favor, ingrese un número.");
-					scanner.nextLine();  // Consumir la entrada inválida
-				}
+	private void mostrarAlmuerzosComprados(JsonNode usuarioNode) {
+		JsonNode almuerzosCompradosNode = usuarioNode.get("almuerzosComprados");
+		if (almuerzosCompradosNode != null) {
+			Iterator<Map.Entry<String, JsonNode>> fields = almuerzosCompradosNode.fields();
+			while (fields.hasNext()) {
+				Map.Entry<String, JsonNode> field = fields.next();
+				System.out.println("Día: " + field.getKey());
+				System.out.println("Menú: " + field.getValue().get("detalles"));
+				System.out.println("-----------");
 			}
+		} else {
+			System.out.println("No hay almuerzos comprados.");
 		}
-		return "";
 	}
 
-	protected void actualizarJsonUsuario(Usuario usuario, String dia) throws IOException {
+	private void actualizarJsonUsuario(Cliente cliente, String dia) throws IOException {
 		File jsonFileUsuarios = new File("src/main/java/Datos/usuarios.json");
+		JsonNode rootUsuarios = mapper.readTree(jsonFileUsuarios);
 		JsonNode usuariosNode = rootUsuarios.get("usuarios");
 		for (JsonNode usuarioNode : usuariosNode) {
-			if (usuarioNode.get("correoElectronico").asText().equals(usuario.getCorreoElectronico())) {
-				ObjectNode almuerzosCompradosNode = (ObjectNode) usuarioNode.get("almuerzosComprados");
-				if (almuerzosCompradosNode == null) {
-					almuerzosCompradosNode = mapper.createObjectNode();
-					((ObjectNode) usuarioNode).set("almuerzosComprados", almuerzosCompradosNode);
-				}
-
-				// Contar el número de almuerzos existentes
-				int numAlmuerzos = 0;
-				Iterator<Map.Entry<String, JsonNode>> fields = almuerzosCompradosNode.fields();
-				while (fields.hasNext()) {
-					Map.Entry<String, JsonNode> field = fields.next();
-					int currentNum = Integer.parseInt(field.getKey());
-					if (currentNum > numAlmuerzos) {
-						numAlmuerzos = currentNum;
-					}
-				}
-
-				// Crear un nuevo objeto para el almuerzo con el número de almuerzo
-				ObjectNode nuevoAlmuerzo = mapper.createObjectNode();
-				String[] detallesAlmuerzo = usuario.getAlmuerzosComprados().get(dia).split(", ");
-				ArrayNode detallesArray = nuevoAlmuerzo.putArray("detalles");
-				for (String detalle : detallesAlmuerzo) {
-					detallesArray.add(detalle);
-				}
-				nuevoAlmuerzo.put("correoElectronico", usuario.getCorreoElectronico());
-
-				// Añadir el nuevo almuerzo al nodo de almuerzos comprados
-				almuerzosCompradosNode.set(String.valueOf(numAlmuerzos + 1), nuevoAlmuerzo);
+			if (usuarioNode.get("correoElectronico").asText().equals(cliente.getCorreoElectronico())) {
+				ObjectNode almuerzosCompradosNode = obtenerNodoAlmuerzosComprados(usuarioNode);
+				agregarAlmuerzo(almuerzosCompradosNode, cliente, dia);
 				break;
 			}
 		}
-		mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFileUsuarios, rootUsuarios);
+		guardarJson(jsonFileUsuarios, rootUsuarios);
 	}
 
-	protected int actualizarJsonDia(String dia, Usuario usuario) throws IOException {
-		File jsonFileDias = new File("src/main/java/Datos/dia.json");
-		JsonNode diaNode = rootDias.get("dia").get(dia);
-		if (diaNode == null) {
-			System.out.println("El nodo para el día " + dia + " no existe.");
-			return -1;
-		}
-		ObjectNode almuerzosCompradosNode = (ObjectNode) diaNode.get("almuerzosComprados");
+	private ObjectNode obtenerNodoAlmuerzosComprados(JsonNode usuarioNode) {
+		ObjectNode almuerzosCompradosNode = (ObjectNode) usuarioNode.get("almuerzosComprados");
 		if (almuerzosCompradosNode == null) {
 			almuerzosCompradosNode = mapper.createObjectNode();
-			((ObjectNode) diaNode).set("almuerzosComprados", almuerzosCompradosNode);
+			((ObjectNode) usuarioNode).set("almuerzosComprados", almuerzosCompradosNode);
 		}
+		return almuerzosCompradosNode;
+	}
 
-		// Contar el número de almuerzos existentes
+	private void agregarAlmuerzo(ObjectNode almuerzosCompradosNode, Cliente cliente, String dia) {
+		int numAlmuerzos = obtenerNumeroAlmuerzos(almuerzosCompradosNode);
+		ObjectNode nuevoAlmuerzo = crearNodoAlmuerzo(cliente, dia);
+		almuerzosCompradosNode.set(String.valueOf(numAlmuerzos + 1), nuevoAlmuerzo);
+	}
+
+	private int obtenerNumeroAlmuerzos(ObjectNode almuerzosCompradosNode) {
 		int numAlmuerzos = 0;
 		Iterator<Map.Entry<String, JsonNode>> fields = almuerzosCompradosNode.fields();
 		while (fields.hasNext()) {
@@ -278,30 +255,51 @@ public static void comprarAlmuerzo(Usuario usuario, Pagos pagos) {
 				numAlmuerzos = currentNum;
 			}
 		}
-
-		// Crear un nuevo objeto para el almuerzo con el número de almuerzo
-		ObjectNode nuevoAlmuerzo = mapper.createObjectNode();
-		String detalles = usuario.getAlmuerzosComprados().get(dia);
-		if (detalles != null) {
-			String[] detallesAlmuerzo = detalles.split(", ");
-			ArrayNode detallesArray = nuevoAlmuerzo.putArray("detalles");
-			for (String detalle : detallesAlmuerzo) {
-				detallesArray.add(detalle);
-			}
-			nuevoAlmuerzo.put("correoElectronico", usuario.getCorreoElectronico());
-
-			// Añadir el nuevo almuerzo al nodo de almuerzos comprados
-			int numeroAsignado = numAlmuerzos + 1;
-			almuerzosCompradosNode.set(String.valueOf(numeroAsignado), nuevoAlmuerzo);
-
-			mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFileDias, rootDias);
-
-			return numeroAsignado;
-		} else {
-			System.out.println("No se encontraron detalles del almuerzo.");
-			return -1;
-		}
+		return numAlmuerzos;
 	}
 
+	private ObjectNode crearNodoAlmuerzo(Cliente cliente, String dia) {
+		ObjectNode nuevoAlmuerzo = mapper.createObjectNode();
+		String[] detallesAlmuerzo = cliente.getAlmuerzosComprados().get(dia).split(", ");
+		ArrayNode detallesArray = nuevoAlmuerzo.putArray("detalles");
+		for (String detalle : detallesAlmuerzo) {
+			detallesArray.add(detalle);
+		}
+		nuevoAlmuerzo.put("correoElectronico", cliente.getCorreoElectronico());
+		return nuevoAlmuerzo;
+	}
 
+	private int actualizarJsonDia(String dia, Cliente cliente) throws IOException {
+		File jsonFileDias = new File("src/main/java/Datos/dia.json");
+		JsonNode rootDias = mapper.readTree(jsonFileDias);
+		JsonNode diaNode = rootDias.get("dia").get(dia);
+		if (diaNode == null) {
+			System.out.println("El nodo para el día " + dia + " no existe.");
+			return -1;
+		}
+		ObjectNode almuerzosCompradosNode = obtenerNodoAlmuerzosCompradosDia(diaNode);
+		return agregarAlmuerzoDia(almuerzosCompradosNode, cliente, dia);
+	}
+
+	private ObjectNode obtenerNodoAlmuerzosCompradosDia(JsonNode diaNode) {
+		ObjectNode almuerzosCompradosNode = (ObjectNode) diaNode.get("almuerzosComprados");
+		if (almuerzosCompradosNode == null) {
+			almuerzosCompradosNode = mapper.createObjectNode();
+			((ObjectNode) diaNode).set("almuerzosComprados", almuerzosCompradosNode);
+		}
+		return almuerzosCompradosNode;
+	}
+
+	private int agregarAlmuerzoDia(ObjectNode almuerzosCompradosNode, Cliente cliente, String dia) throws IOException {
+		int numAlmuerzos = obtenerNumeroAlmuerzos(almuerzosCompradosNode);
+		ObjectNode nuevoAlmuerzo = crearNodoAlmuerzo(cliente, dia);
+		int numeroAsignado = numAlmuerzos + 1;
+		almuerzosCompradosNode.set(String.valueOf(numeroAsignado), nuevoAlmuerzo);
+		guardarJson(new File("src/main/java/Datos/dia.json"), rootDias);
+		return numeroAsignado;
+	}
+
+	private void guardarJson(File archivo, JsonNode root) throws IOException {
+		mapper.writerWithDefaultPrettyPrinter().writeValue(archivo, root);
+	}
 }
