@@ -1,6 +1,9 @@
 package Dominio;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class MenuLogin {
@@ -49,7 +52,10 @@ public class MenuLogin {
                 continuar = ejecutarOpcionMenuCliente((Cliente) usuarioLogueado);
             }
         } else if (usuarioLogueado != null && usuarioLogueado instanceof Admin) {
-            // Aquí puedes agregar el menú para Admin si es necesario
+            boolean continuar = true;
+            while (continuar) {
+                continuar = ejecutarOpcionMenuAdmin((Admin) usuarioLogueado);
+            }
         }
     }
 
@@ -76,6 +82,67 @@ public class MenuLogin {
                 System.out.println("Opción inválida. Intente nuevamente.");
                 return true;
         }
+    }
+
+    private boolean ejecutarOpcionMenuAdmin(Admin admin) {
+        System.out.println("Menú de Admin:");
+        System.out.println("1. Ver Almuerzos por Día");
+        System.out.println("2. Eliminar Almuerzo por Día");
+        System.out.println("3. Cerrar Sesión");
+        System.out.print("Seleccione una opción: ");
+
+        int opcion = leerOpcion();
+
+        switch (opcion) {
+            case 1:
+                verAlmuerzosPorDia(admin);
+                return true;
+            case 2:
+                eliminarAlmuerzoPorDia(admin);
+                return true;
+            case 3:
+                System.out.println("Cerrando sesión...");
+                return false;
+            default:
+                System.out.println("Opción inválida. Intente nuevamente.");
+                return true;
+        }
+    }
+
+    private void verAlmuerzosPorDia(Admin admin) {
+        String dia = Admin.obtenerDiaValido();
+        JSONArray almuerzos = admin.verAlmuerzosPorDia(dia);
+        if (almuerzos != null) {
+            for (int i = 0; i < almuerzos.length(); i++) {
+                JSONObject almuerzo = almuerzos.getJSONObject(i);
+                System.out.println("Código de retiro: " + (i + 1));
+                System.out.println("Detalles: " + almuerzo.getJSONArray("detalles"));
+                System.out.println("Correo Electrónico: " + almuerzo.getString("correoElectronico"));
+                System.out.println("-----------");
+            }
+        } else {
+            System.out.println("No se encontraron almuerzos para el día: " + dia);
+        }
+    }
+
+    private void eliminarAlmuerzoPorDia(Admin admin) {
+        String dia = Admin.obtenerDiaValido();
+        JSONArray almuerzos = admin.verAlmuerzosPorDia(dia);
+        if (almuerzos != null) {
+            for (int i = 0; i < almuerzos.length(); i++) {
+                JSONObject almuerzo = almuerzos.getJSONObject(i);
+                System.out.println((i + 1) + ". Correo Electrónico: " + almuerzo.getString("correoElectronico") + " - Detalles: " + almuerzo.getJSONArray("detalles"));
+            }
+            String correo = obtenerEntrada("Ingrese el correo electrónico del cliente para eliminar: ");
+            admin.eliminarAlmuerzoPorDia(dia, correo);
+        } else {
+            System.out.println("No se encontraron almuerzos para el día: " + dia);
+        }
+    }
+
+    private String obtenerEntrada(String mensaje) {
+        System.out.println(mensaje);
+        return scanner.nextLine();
     }
 
     private int leerOpcion() {
