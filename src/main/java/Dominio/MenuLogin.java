@@ -41,13 +41,16 @@ public class MenuLogin {
     }
 
     private void registrarUsuario() {
-        controladorLogin.registrarse();
+        controladorLogin.registrarse("Usuario","pepitogrillo");
     }
 
     private void iniciarSesion() {
         Usuario usuarioLogueado = controladorLogin.iniciarSesion();
         if (usuarioLogueado != null) {
-            new ServicioPedidos().iniciar(usuarioLogueado);
+            boolean continuar = true;
+            while (continuar) {
+                continuar = controladorLogin.mostrarMenuUsuario(usuarioLogueado);
+            }
         }
     }
 }

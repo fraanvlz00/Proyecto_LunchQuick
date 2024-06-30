@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="commit3 fixed">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="commit6 fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ContralodorLogin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Persona.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuarios.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Dia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Dia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/MenuLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/MenuLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Pagos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Pagos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Launcher/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Launcher/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/ModeloVentanas.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,31 +51,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Naxo&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ignacio/IdeaProjects/Proyecto_LunchQuick&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Guis.executor": "Run",
+    "Application.Login.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "270",
+    "git-widget-placeholder": "Naxo",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Ignacio/IdeaProjects/Proyecto_LunchQuick/src/main/java/Ventanas",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\Ventanas" />
+      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\org\example" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\resources" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\org\example" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\Datos" />
     </key>
@@ -83,7 +94,27 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Guis" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Guis" />
+      <module name="Proyecto_LunchQuick" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Ventanas.Login" />
+      <module name="Proyecto_LunchQuick" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Ventanas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Launcher.Main" />
       <module name="Proyecto_LunchQuick" />
@@ -100,6 +131,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Login" />
+        <item itemvalue="Application.Guis" />
       </list>
     </recent_temporary>
   </component>
@@ -159,7 +192,23 @@
       <option name="project" value="LOCAL" />
       <updated>1717968086327</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="commit6 fixed">
+      <option name="closed" value="true" />
+      <created>1718055159176</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718055159176</updated>
+    </task>
+    <task id="LOCAL-00007" summary="commit6 fixed">
+      <option name="closed" value="true" />
+      <created>1718055216875</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718055216875</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,7 +226,8 @@
     <MESSAGE value="comit" />
     <MESSAGE value="commit3" />
     <MESSAGE value="commit3 fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit3 fixed" />
+    <MESSAGE value="commit6 fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit6 fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -186,6 +236,11 @@
           <properties class="java.io.FileNotFoundException" package="java.io" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Ventanas/Register.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

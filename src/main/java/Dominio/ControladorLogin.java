@@ -16,12 +16,14 @@ public class ControladorLogin {
     private Usuario usuario;
     private ObjectMapper mapper;
     private File jsonFile;
+    private Pagos pagos;
 
     public ControladorLogin() {
         try {
             usuario = new Usuario();
             mapper = new ObjectMapper();
             jsonFile = new File("src/main/java/Datos/usuarios.json");
+            pagos = new Pagos();
             if (!jsonFile.exists()) {
                 throw new IOException("Archivo JSON no encontrado en la ruta especificada: " + jsonFile.getAbsolutePath());
             }
@@ -64,34 +66,61 @@ public class ControladorLogin {
         return null;
     }
 
-    public boolean registrarse() {
+    public boolean mostrarMenuUsuario(Usuario usuario) {
         Scanner scanner = new Scanner(System.in);
+        int opcion = 0;
+
+        while (opcion != 3) {
+            System.out.println("Menú de Usuario:");
+            System.out.println("1. Comprar Almuerzo");
+            System.out.println("2. Ver Almuerzos Comprados");
+            System.out.println("3. Cerrar Sesión");
+            System.out.print("Seleccione una opción: ");
+
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    ServicioPedidos.comprarAlmuerzo(usuario, pagos);  // Pasar la instancia de pagos
+                    break;
+                case 2:
+                    ServicioPedidos.verAlmuerzosComprados(usuario);  // Llamada al método estático
+                    break;
+                case 3:
+                    System.out.println("Cerrando sesión...");
+                    return false;  // Volver al menú principal
+                default:
+                    System.out.println("Opción inválida. Intente nuevamente.");
+            }
+        }
+        return true;  // Mantenerse en el menú de usuario
+    }
+
+    public boolean registrarse(String correo, String contrasena) {
+
+       /* Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese su correo electrónico: ");
-        String correo = scanner.nextLine();
-        System.out.println("Ingrese su contraseña: ");
-        String contraseña = scanner.nextLine();
+       String correo = scanner.nextLine();
+        System.out.println("Ingrese su contrasena: ");
+       String contrasena = scanner.nextLine();*/
 
         try {
-
             Iterator<JsonNode> usuarios = usuario.root.get("usuarios").elements();
             while (usuarios.hasNext()) {
                 JsonNode usuarioNode = usuarios.next();
                 if (usuarioNode.has("correoElectronico") && usuarioNode.get("correoElectronico").asText().equals(correo)) {
-                    System.out.println("El correo electrónico ya está registrado.");
+                    //System.out.println("El correo electrónico ya está registrado.");
                     return false;
                 }
             }
 
-
             JsonNodeFactory factory = JsonNodeFactory.instance;
             ObjectNode newNode = factory.objectNode();
             newNode.put("correoElectronico", correo);
-            newNode.put("contraseña", contraseña);
-
+            newNode.put("contrasena", contrasena);
 
             ArrayNode usuariosArray = (ArrayNode) usuario.root.get("usuarios");
             usuariosArray.add(newNode);
-
 
             FileWriter fileWriter = new FileWriter(jsonFile);
             mapper.writeValue(fileWriter, usuario.root);
@@ -104,5 +133,4 @@ public class ControladorLogin {
             return false;
         }
     }
-
 }

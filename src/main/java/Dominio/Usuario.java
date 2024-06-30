@@ -5,13 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.HashMap;
 
 public class Usuario {
     private String correoElectronico;
     private String contraseña;
-    private String almuerzoComprado;
+    private HashMap<String, String> almuerzosComprados;
     JsonNode root;
     private ObjectMapper mapper;
     private String rut; // Agregar atributo rut
@@ -20,7 +19,7 @@ public class Usuario {
     public Usuario(String correoElectronico, String contraseña, String almuerzoComprado) {
         this.correoElectronico = correoElectronico;
         this.contraseña = contraseña;
-        this.almuerzoComprado = almuerzoComprado;
+        this.almuerzosComprados = new HashMap<>();
     }
 
     // Constructor para inicializar el JSON y el ObjectMapper
@@ -31,6 +30,7 @@ public class Usuario {
             throw new IOException("Archivo JSON no encontrado en la ruta especificada: " + jsonFile.getAbsolutePath());
         }
         root = mapper.readTree(jsonFile);
+        this.almuerzosComprados = new HashMap<>();
     }
 
     // Getters y setters
@@ -50,12 +50,12 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    public String getAlmuerzoComprado() {
-        return almuerzoComprado;
+    public HashMap<String, String> getAlmuerzosComprados() {
+        return almuerzosComprados;
     }
 
-    public void setAlmuerzoComprado(String almuerzoComprado) {
-        this.almuerzoComprado = almuerzoComprado;
+    public void agregarAlmuerzoComprado(String dia, String tipoMenu) {
+        almuerzosComprados.put(dia, tipoMenu);
     }
 
     public String getRut() {
@@ -65,6 +65,4 @@ public class Usuario {
     public void setRut(String rut) {
         this.rut = rut;
     }
-
-
 }
