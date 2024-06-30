@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="funcionando mostrar pedidos comprados por usuario">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="usuarios modificado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Avance02/java/Administrador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Avance02/java/Compra.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Datos/dia.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/dia.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/MenuLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/MenuLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Pagos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Pagos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Launcher/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Launcher/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718079570492</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="usuarios modificado">
+      <option name="closed" value="true" />
+      <created>1719700040408</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1719700040408</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +273,8 @@
     <MESSAGE value="merge avance 2" />
     <MESSAGE value="funcionando mostrar pedidos comprados por usuario con mejoras" />
     <MESSAGE value="funcionando mostrar pedidos comprados por usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="funcionando mostrar pedidos comprados por usuario" />
+    <MESSAGE value="usuarios modificado" />
+    <option name="LAST_COMMIT_MESSAGE" value="usuarios modificado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
