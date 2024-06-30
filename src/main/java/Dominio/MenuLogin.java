@@ -1,20 +1,14 @@
 package Dominio;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import java.util.InputMismatchException;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class MenuLogin {
-    private final ControladorLogin controladorLogin;
-    private final Scanner scanner;
-    private final ServicioPedidos servicioPedidos;
+    private ControladorLogin controladorLogin;
+    private Scanner scanner;
 
     public MenuLogin() {
         this.controladorLogin = new ControladorLogin();
         this.scanner = new Scanner(System.in);
-        this.servicioPedidos = new ServicioPedidos();
     }
 
     public void mostrarMenu() {
@@ -26,10 +20,12 @@ public class MenuLogin {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción: ");
 
-            int opcion = leerOpcion();
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
+
             switch (opcion) {
                 case 1:
-                    controladorLogin.registrarse();
+                    registrarUsuario();
                     break;
                 case 2:
                     iniciarSesion();
@@ -44,126 +40,16 @@ public class MenuLogin {
         }
     }
 
+    private void registrarUsuario() {
+        controladorLogin.registrarse("Usuario","pepitogrillo");
+    }
+
     private void iniciarSesion() {
         Usuario usuarioLogueado = controladorLogin.iniciarSesion();
-        if (usuarioLogueado != null && usuarioLogueado instanceof Cliente) {
+        if (usuarioLogueado != null) {
             boolean continuar = true;
             while (continuar) {
-                continuar = ejecutarOpcionMenuCliente((Cliente) usuarioLogueado);
-            }
-        } else if (usuarioLogueado != null && usuarioLogueado instanceof Admin) {
-            boolean continuar = true;
-            while (continuar) {
-                continuar = ejecutarOpcionMenuAdmin((Admin) usuarioLogueado);
-            }
-        }
-    }
-
-    private boolean ejecutarOpcionMenuCliente(Cliente cliente) {
-        System.out.println("Menú de Cliente:");
-        System.out.println("1. Comprar Almuerzo");
-        System.out.println("2. Ver Almuerzos Comprados");
-        System.out.println("3. Cerrar Sesión");
-        System.out.print("Seleccione una opción: ");
-
-        int opcion = leerOpcion();
-
-        switch (opcion) {
-            case 1:
-                servicioPedidos.comprarAlmuerzo(cliente, new Pagos());
-                return true;
-            case 2:
-                servicioPedidos.verAlmuerzosComprados(cliente);
-                return true;
-            case 3:
-                System.out.println("Cerrando sesión...");
-                return false;
-            default:
-                System.out.println("Opción inválida. Intente nuevamente.");
-                return true;
-        }
-    }
-
-    private boolean ejecutarOpcionMenuAdmin(Admin admin) {
-        System.out.println("Menú de Admin:");
-        System.out.println("1. Ver Almuerzos por Día");
-        System.out.println("2. Eliminar Almuerzo por Código de Retiro");
-        System.out.println("3. Cerrar Sesión");
-        System.out.print("Seleccione una opción: ");
-
-        int opcion = leerOpcion();
-
-        switch (opcion) {
-            case 1:
-                verAlmuerzosPorDia(admin);
-                return true;
-            case 2:
-                eliminarAlmuerzoPorCodigo(admin);
-                return true;
-            case 3:
-                System.out.println("Cerrando sesión...");
-                return false;
-            default:
-                System.out.println("Opción inválida. Intente nuevamente.");
-                return true;
-        }
-    }
-
-    private void verAlmuerzosPorDia(Admin admin) {
-        String dia = Admin.obtenerDiaValido();
-        JSONArray almuerzos = admin.verAlmuerzosPorDia(dia);
-        if (almuerzos != null) {
-            JSONObject jsonObject = ManejarJSON.leerJSON();
-            JSONObject diaObject = jsonObject.optJSONObject("dia").optJSONObject(dia);
-            JSONObject almuerzosComprados = diaObject.getJSONObject("almuerzosComprados");
-            Iterator<String> keys = almuerzosComprados.keys();
-            while (keys.hasNext()) {
-                String key = keys.next();
-                JSONObject almuerzo = almuerzosComprados.getJSONObject(key);
-                System.out.println("Código de retiro: " + key);
-                System.out.println("Detalles: " + almuerzo.getJSONArray("detalles"));
-                System.out.println("Correo Electrónico: " + almuerzo.getString("correoElectronico"));
-                System.out.println("-----------");
-            }
-        } else {
-            System.out.println("No se encontraron almuerzos para el día: " + dia);
-        }
-    }
-
-    private void eliminarAlmuerzoPorCodigo(Admin admin) {
-        String dia = Admin.obtenerDiaValido();
-        JSONArray almuerzos = admin.verAlmuerzosPorDia(dia);
-        if (almuerzos != null) {
-            JSONObject jsonObject = ManejarJSON.leerJSON();
-            JSONObject diaObject = jsonObject.optJSONObject("dia").optJSONObject(dia);
-            JSONObject almuerzosComprados = diaObject.getJSONObject("almuerzosComprados");
-            Iterator<String> keys = almuerzosComprados.keys();
-            while (keys.hasNext()) {
-                String key = keys.next();
-                JSONObject almuerzo = almuerzosComprados.getJSONObject(key);
-                System.out.println(key + ". Correo Electrónico: " + almuerzo.getString("correoElectronico") + " - Detalles: " + almuerzo.getJSONArray("detalles"));
-            }
-            String codigoRetiro = obtenerEntrada("Ingrese el código de retiro del almuerzo para eliminar: ");
-            admin.eliminarAlmuerzoPorCodigo(dia, codigoRetiro);
-        } else {
-            System.out.println("No se encontraron almuerzos para el día: " + dia);
-        }
-    }
-
-    private String obtenerEntrada(String mensaje) {
-        System.out.println(mensaje);
-        return scanner.nextLine();
-    }
-
-    private int leerOpcion() {
-        while (true) {
-            try {
-                int opcion = scanner.nextInt();
-                scanner.nextLine(); // Consumir la nueva línea
-                return opcion;
-            } catch (InputMismatchException e) {
-                System.out.println("Entrada no válida. Por favor, ingrese un número.");
-                scanner.nextLine(); // Limpiar el buffer
+                continuar = controladorLogin.mostrarMenuUsuario(usuarioLogueado);
             }
         }
     }
