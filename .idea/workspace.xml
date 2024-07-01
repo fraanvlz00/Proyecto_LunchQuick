@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="Funcionando usuario cliente y el inicio de sesion fallido">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="Funcionando el mostrar almuerzos admin, falta poder elimjinarlos bien">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Datos/dia.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/dia.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/usuarios.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Dia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Dia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ManejarJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ManejarJSON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/MenuLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/MenuLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Pagos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Pagos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719709675522</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Funcionando el mostrar almuerzos admin, falta poder elimjinarlos bien">
+      <option name="closed" value="true" />
+      <created>1719714747162</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1719714747162</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,7 +289,8 @@
     <MESSAGE value="funcionando mostrar pedidos comprados por usuario" />
     <MESSAGE value="usuarios modificado" />
     <MESSAGE value="Funcionando usuario cliente y el inicio de sesion fallido" />
-    <option name="LAST_COMMIT_MESSAGE" value="Funcionando usuario cliente y el inicio de sesion fallido" />
+    <MESSAGE value="Funcionando el mostrar almuerzos admin, falta poder elimjinarlos bien" />
+    <option name="LAST_COMMIT_MESSAGE" value="Funcionando el mostrar almuerzos admin, falta poder elimjinarlos bien" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
