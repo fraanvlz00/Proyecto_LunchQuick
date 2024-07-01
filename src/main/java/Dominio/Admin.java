@@ -21,7 +21,7 @@ public class Admin extends Usuario {
         return diaObject.getJSONObject("almuerzosComprados").toJSONArray(diaObject.getJSONObject("almuerzosComprados").names());
     }
 
-    public void eliminarAlmuerzoPorDia(String dia, String correoCliente) {
+    public void eliminarAlmuerzoPorCodigo(String dia, String codigoRetiro) {
         JSONObject jsonObject = ManejarJSON.leerJSON();
         JSONObject diaObject = jsonObject.optJSONObject("dia").optJSONObject(dia);
         if (diaObject == null || !diaObject.has("almuerzosComprados")) {
@@ -30,24 +30,13 @@ public class Admin extends Usuario {
         }
 
         JSONObject almuerzosDia = diaObject.getJSONObject("almuerzosComprados");
-        boolean encontrado = false;
-        Iterator<String> keys = almuerzosDia.keys();
-        while (keys.hasNext()) {
-            String key = keys.next();
-            JSONObject pedido = almuerzosDia.getJSONObject(key);
-            if (pedido.getString("correoElectronico").equals(correoCliente)) {
-                keys.remove();
-                encontrado = true;
-                break;
-            }
-        }
-
-        if (encontrado) {
+        if (almuerzosDia.has(codigoRetiro)) {
+            almuerzosDia.remove(codigoRetiro);
             diaObject.put("almuerzosComprados", almuerzosDia);
             ManejarJSON.escribirJSON(jsonObject);
             System.out.println("Almuerzo eliminado.");
         } else {
-            System.out.println("No se encontró un almuerzo para el correo: " + correoCliente);
+            System.out.println("No se encontró un almuerzo con el código de retiro: " + codigoRetiro);
         }
     }
 
