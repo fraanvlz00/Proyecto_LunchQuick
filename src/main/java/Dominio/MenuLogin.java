@@ -87,7 +87,7 @@ public class MenuLogin {
     private boolean ejecutarOpcionMenuAdmin(Admin admin) {
         System.out.println("Menú de Admin:");
         System.out.println("1. Ver Almuerzos por Día");
-        System.out.println("2. Eliminar Almuerzo por Día");
+        System.out.println("2. Eliminar Almuerzo por Código de Retiro");
         System.out.println("3. Cerrar Sesión");
         System.out.print("Seleccione una opción: ");
 
@@ -98,7 +98,7 @@ public class MenuLogin {
                 verAlmuerzosPorDia(admin);
                 return true;
             case 2:
-                eliminarAlmuerzoPorDia(admin);
+                eliminarAlmuerzoPorCodigo(admin);
                 return true;
             case 3:
                 System.out.println("Cerrando sesión...");
@@ -130,7 +130,7 @@ public class MenuLogin {
         }
     }
 
-    private void eliminarAlmuerzoPorDia(Admin admin) {
+    private void eliminarAlmuerzoPorCodigo(Admin admin) {
         String dia = Admin.obtenerDiaValido();
         JSONArray almuerzos = admin.verAlmuerzosPorDia(dia);
         if (almuerzos != null) {
@@ -143,8 +143,8 @@ public class MenuLogin {
                 JSONObject almuerzo = almuerzosComprados.getJSONObject(key);
                 System.out.println(key + ". Correo Electrónico: " + almuerzo.getString("correoElectronico") + " - Detalles: " + almuerzo.getJSONArray("detalles"));
             }
-            String correo = obtenerEntrada("Ingrese el correo electrónico del cliente para eliminar: ");
-            admin.eliminarAlmuerzoPorDia(dia, correo);
+            String codigoRetiro = obtenerEntrada("Ingrese el código de retiro del almuerzo para eliminar: ");
+            admin.eliminarAlmuerzoPorCodigo(dia, codigoRetiro);
         } else {
             System.out.println("No se encontraron almuerzos para el día: " + dia);
         }
