@@ -13,7 +13,7 @@ public class Admin extends Usuario {
 
     public JSONArray verAlmuerzosPorDia(String dia) {
         JSONObject jsonObject = ManejarJSON.leerJSON();
-        JSONObject diaObject = jsonObject.getJSONObject("dia").optJSONObject(dia);
+        JSONObject diaObject = jsonObject.optJSONObject("dia").optJSONObject(dia);
         if (diaObject == null || !diaObject.has("almuerzosComprados")) {
             System.out.println("No se encontraron almuerzos para el día: " + dia);
             return null;
@@ -23,7 +23,7 @@ public class Admin extends Usuario {
 
     public void eliminarAlmuerzoPorDia(String dia, String correoCliente) {
         JSONObject jsonObject = ManejarJSON.leerJSON();
-        JSONObject diaObject = jsonObject.getJSONObject("dia").optJSONObject(dia);
+        JSONObject diaObject = jsonObject.optJSONObject("dia").optJSONObject(dia);
         if (diaObject == null || !diaObject.has("almuerzosComprados")) {
             System.out.println("No se encontraron almuerzos para el día: " + dia);
             return;
