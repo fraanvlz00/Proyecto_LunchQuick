@@ -1,4 +1,4 @@
-import javax.swing.*;
+/*import javax.swing.*;
 
 public class PedidoManager {
     private PedidoGUI pedidoGUI;
@@ -21,4 +21,4 @@ public class PedidoManager {
             }
         });
     }
-}
+}*/

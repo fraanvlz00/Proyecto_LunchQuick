@@ -1,4 +1,4 @@
-import javax.swing.*;
+/*import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.net.URL;
@@ -180,4 +180,4 @@ public class PedidoGUI {
     private void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(frame, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
+}*/
