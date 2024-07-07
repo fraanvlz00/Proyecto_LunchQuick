@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="commit 8 ventanas nuevas">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="commit 9 añadiendo mas ventanas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Comprar.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Comprar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/DiaSemana.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/DiaSemana.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Historial.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Historial.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Login.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Login.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Register.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Register.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,29 +41,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Guis.executor": "Run",
-    "Application.Login.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "270",
-    "git-widget-placeholder": "Naxo",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Ignacio/IdeaProjects/Proyecto_LunchQuick/src/main/java",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15820312",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Guis.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Login.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;270&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Naxo&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ignacio/IdeaProjects/Proyecto_LunchQuick/src/main/java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15820312&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java" />
@@ -242,7 +231,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719935345910</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="commit 9 añadiendo mas ventanas">
+      <option name="closed" value="true" />
+      <created>1720314399354</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1720314399354</updated>
+    </task>
+    <task id="LOCAL-00013" summary="commit 9 añadiendo mas ventanas">
+      <option name="closed" value="true" />
+      <created>1720314414427</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1720314414427</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,7 +268,8 @@
     <MESSAGE value="commit6 fixed" />
     <MESSAGE value="commit7 añadiendo ventanas" />
     <MESSAGE value="commit 8 ventanas nuevas" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 8 ventanas nuevas" />
+    <MESSAGE value="commit 9 añadiendo mas ventanas" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 9 añadiendo mas ventanas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
