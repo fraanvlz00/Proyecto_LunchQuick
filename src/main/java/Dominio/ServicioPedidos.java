@@ -17,6 +17,8 @@ public class ServicioPedidos {
 	private JsonNode rootMenus;
 	private final ObjectMapper mapper;
 	private final Scanner scanner;
+	private String detallesAlmuerzoComprado;
+	private int numeroRetiro;
 
 	public ServicioPedidos() {
 		mapper = new ObjectMapper();
@@ -48,10 +50,10 @@ public class ServicioPedidos {
 		Menu menu = obtenerMenu(dia, tipoMenu);
 		if (menu == null) return;
 
-		String almuerzoComprado = seleccionarDetallesMenu(menu);
+		detallesAlmuerzoComprado = seleccionarDetallesMenu(menu);
 
-		mostrarResumenCompra(cliente, menu, almuerzoComprado);
-		procesarCompra(cliente, pagos, dia, almuerzoComprado, menu.getPrecio());
+		mostrarResumenCompra(cliente, menu, detallesAlmuerzoComprado);
+		procesarCompra(cliente, pagos, dia, detallesAlmuerzoComprado, menu.getPrecio());
 	}
 
 	private String seleccionarDia() {
@@ -168,8 +170,8 @@ public class ServicioPedidos {
 		if (pagos.verificarPago(rut, codigoPago)) {
 			System.out.println("Pago verificado.");
 			try {
-				int numeroAsignado = actualizarJsonDia(dia, cliente, almuerzoComprado);
-				System.out.println("El número de retiro de su almuerzo es: " + numeroAsignado);
+				numeroRetiro = actualizarJsonDia(dia, cliente, almuerzoComprado);
+				System.out.println("El número de retiro de su almuerzo es: " + numeroRetiro);
 			} catch (IOException e) {
 				System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
 			}
@@ -260,5 +262,13 @@ public class ServicioPedidos {
 		} catch (Exception e) {
 			System.out.println("Error al leer los almuerzos comprados: " + e.getMessage());
 		}
+	}
+
+	public String getDetallesAlmuerzoComprado() {
+		return detallesAlmuerzoComprado;
+	}
+
+	public int getNumeroRetiro() {
+		return numeroRetiro;
 	}
 }

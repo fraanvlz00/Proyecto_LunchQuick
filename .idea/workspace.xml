@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="ventana pago agregada">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="ventana pago agregada y ticket">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,11 +63,15 @@
     "git-widget-placeholder": "fran",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Ignacio/IdeaProjects/Proyecto_LunchQuick",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -189,6 +191,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1717864485290</updated>
+      <workItem from="1720377448702" duration="1429000" />
     </task>
     <task id="LOCAL-00001" summary="comit">
       <option name="closed" value="true" />
@@ -294,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720318938816</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ventana pago agregada y ticket">
+      <option name="closed" value="true" />
+      <created>1720332780618</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1720332780618</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,7 +334,8 @@
     <MESSAGE value="Funcionando el mostrar almuerzos admin, falta poder elimjinarlos bien" />
     <MESSAGE value="corregido mostrar almuerzos por admin con codigo correcto" />
     <MESSAGE value="ventana pago agregada" />
-    <option name="LAST_COMMIT_MESSAGE" value="ventana pago agregada" />
+    <MESSAGE value="ventana pago agregada y ticket" />
+    <option name="LAST_COMMIT_MESSAGE" value="ventana pago agregada y ticket" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
