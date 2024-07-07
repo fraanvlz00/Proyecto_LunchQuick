@@ -1,11 +1,11 @@
 Cada uno realiza el testing de sus metodos
 
 Nicolas Sandoval:
-carrito de compras
+Ventanas del pryecto
 
 Ignacio Valdebenito:
-ingreso de usuario
+Ventas del proyecto e inicio sesion
 
 
 Fransheska Valenzuela:
-pago de productos
+Funcionamiento de la app por consola
