@@ -261,4 +261,37 @@ public class ServicioPedidos {
 			System.out.println("Error al leer los almuerzos comprados: " + e.getMessage());
 		}
 	}
+	public String obtenerHistorialCompras() {
+		StringBuilder historial = new StringBuilder();
+		ObjectMapper mapper = new ObjectMapper();
+		File file = new File("src/main/java/Datos/compras.json");
+
+		try {
+			JsonNode rootNode = mapper.readTree(file);
+			JsonNode comprasNode = rootNode.get("compras");
+			if (comprasNode.isArray()) {
+				for (JsonNode compraNode : comprasNode) {
+					if (compraNode.get("correoElectronico").asText().equals(correoElectronicoCliente)) {
+						historial.append("Fecha: ").append(compraNode.get("fecha").asText()).append("\n");
+						historial.append("Detalles: ");
+						JsonNode detallesNode = compraNode.get("detalles");
+						if (detallesNode.isArray()) {
+							for (JsonNode detalleNode : detallesNode) {
+								historial.append(detalleNode.asText()).append(", ");
+							}
+							if (historial.toString().endsWith(", ")) {
+								historial.setLength(historial.length() - 2); // Eliminar la última coma y espacio
+							}
+						}
+						historial.append("\n-----------\n");
+					}
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			return "Error al leer el historial de compras.";
+		}
+
+		return historial.length() > 0 ? historial.toString() : "No se encontraron compras para este cliente.";
+	}
 }
