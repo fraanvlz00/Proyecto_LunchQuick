@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="commit 9 añadiendo mas ventanas">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="corregido mostrar almuerzos por admin con codigo correcto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +16,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -22,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="avance-2-" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,71 +43,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Guis.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Login.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;270&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Naxo&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ignacio/IdeaProjects/Proyecto_LunchQuick/src/main/java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15820312&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.Pago.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.PagosTest and 2 more.executor": "Run",
+    "JUnit.ServicioPedidosTest.executor": "Run",
+    "JUnit.UsuarioTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "fran",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Ignacio/IdeaProjects/Proyecto_LunchQuick",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java" />
-      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\Ventanas" />
-      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\org\example" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\resources" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\org\example" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\Datos" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.example" />
       <recent name="org" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Dominio" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Guis" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Guis" />
-      <module name="Proyecto_LunchQuick" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Ventanas.Login" />
-      <module name="Proyecto_LunchQuick" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Ventanas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Pago">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Launcher.Main" />
       <module name="Proyecto_LunchQuick" />
@@ -119,11 +106,68 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Pago" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Ventanas.Pago" />
+      <module name="Proyecto_LunchQuick" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Ventanas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PagosTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Proyecto_LunchQuick" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="Dominio.PagosTest" />
+        <pattern testClass="Dominio.ServicioPedidosTest" />
+        <pattern testClass="Dominio.UsuarioTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServicioPedidosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Proyecto_LunchQuick" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Dominio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Dominio" />
+      <option name="MAIN_CLASS_NAME" value="Dominio.ServicioPedidosTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsuarioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Proyecto_LunchQuick" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Dominio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Dominio" />
+      <option name="MAIN_CLASS_NAME" value="Dominio.UsuarioTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Pago" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Login" />
-        <item itemvalue="Application.Guis" />
+        <item itemvalue="JUnit.ServicioPedidosTest" />
+        <item itemvalue="JUnit.UsuarioTest" />
+        <item itemvalue="JUnit.PagosTest and 2 more" />
       </list>
     </recent_temporary>
   </component>
@@ -183,72 +227,67 @@
       <option name="project" value="LOCAL" />
       <updated>1717968086327</updated>
     </task>
-    <task id="LOCAL-00006" summary="commit6 fixed">
+    <task id="LOCAL-00006" summary="merge avance 2">
       <option name="closed" value="true" />
-      <created>1718055159176</created>
+      <created>1718068394146</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1718055159176</updated>
+      <updated>1718068394146</updated>
     </task>
-    <task id="LOCAL-00007" summary="commit6 fixed">
+    <task id="LOCAL-00007" summary="funcionando mostrar pedidos comprados por usuario">
       <option name="closed" value="true" />
-      <created>1718055216875</created>
+      <created>1718077069779</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1718055216875</updated>
+      <updated>1718077069779</updated>
     </task>
-    <task id="LOCAL-00008" summary="commit7 añadiendo ventanas">
+    <task id="LOCAL-00008" summary="funcionando mostrar pedidos comprados por usuario">
       <option name="closed" value="true" />
-      <created>1719781068217</created>
+      <created>1718079570492</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1719781068217</updated>
+      <updated>1718079570492</updated>
     </task>
-    <task id="LOCAL-00009" summary="commit7 añadiendo ventanas">
+    <task id="LOCAL-00009" summary="usuarios modificado">
       <option name="closed" value="true" />
-      <created>1719781124337</created>
+      <created>1719700040408</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1719781124337</updated>
+      <updated>1719700040408</updated>
     </task>
-    <task id="LOCAL-00010" summary="commit 8 ventanas nuevas">
+    <task id="LOCAL-00010" summary="Funcionando usuario cliente y el inicio de sesion fallido">
       <option name="closed" value="true" />
-      <created>1719935324598</created>
+      <created>1719709675522</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1719935324598</updated>
+      <updated>1719709675522</updated>
     </task>
-    <task id="LOCAL-00011" summary="commit 8 ventanas nuevas">
+    <task id="LOCAL-00011" summary="Funcionando el mostrar almuerzos admin, falta poder elimjinarlos bien">
       <option name="closed" value="true" />
-      <created>1719935345910</created>
+      <created>1719714747162</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1719935345910</updated>
+      <updated>1719714747162</updated>
     </task>
-    <task id="LOCAL-00012" summary="commit 9 añadiendo mas ventanas">
+    <task id="LOCAL-00012" summary="corregido mostrar almuerzos por admin con codigo correcto">
       <option name="closed" value="true" />
-      <created>1720314399354</created>
+      <created>1719808925974</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1720314399354</updated>
+      <updated>1719808925974</updated>
     </task>
-    <task id="LOCAL-00013" summary="commit 9 añadiendo mas ventanas">
-      <option name="closed" value="true" />
-      <created>1720314414427</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1720314414427</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="13" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -265,11 +304,14 @@
     <MESSAGE value="comit" />
     <MESSAGE value="commit3" />
     <MESSAGE value="commit3 fixed" />
-    <MESSAGE value="commit6 fixed" />
-    <MESSAGE value="commit7 añadiendo ventanas" />
-    <MESSAGE value="commit 8 ventanas nuevas" />
-    <MESSAGE value="commit 9 añadiendo mas ventanas" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 9 añadiendo mas ventanas" />
+    <MESSAGE value="merge avance 2" />
+    <MESSAGE value="funcionando mostrar pedidos comprados por usuario con mejoras" />
+    <MESSAGE value="funcionando mostrar pedidos comprados por usuario" />
+    <MESSAGE value="usuarios modificado" />
+    <MESSAGE value="Funcionando usuario cliente y el inicio de sesion fallido" />
+    <MESSAGE value="Funcionando el mostrar almuerzos admin, falta poder elimjinarlos bien" />
+    <MESSAGE value="corregido mostrar almuerzos por admin con codigo correcto" />
+    <option name="LAST_COMMIT_MESSAGE" value="corregido mostrar almuerzos por admin con codigo correcto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -278,11 +320,6 @@
           <properties class="java.io.FileNotFoundException" package="java.io" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Ventanas/Register.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
