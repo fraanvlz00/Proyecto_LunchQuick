@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="corregido mostrar almuerzos por admin con codigo correcto">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="ventana pago agregada">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719808925974</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ventana pago agregada">
+      <option name="closed" value="true" />
+      <created>1720318938816</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1720318938816</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +322,8 @@
     <MESSAGE value="Funcionando usuario cliente y el inicio de sesion fallido" />
     <MESSAGE value="Funcionando el mostrar almuerzos admin, falta poder elimjinarlos bien" />
     <MESSAGE value="corregido mostrar almuerzos por admin con codigo correcto" />
-    <option name="LAST_COMMIT_MESSAGE" value="corregido mostrar almuerzos por admin con codigo correcto" />
+    <MESSAGE value="ventana pago agregada" />
+    <option name="LAST_COMMIT_MESSAGE" value="ventana pago agregada" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
