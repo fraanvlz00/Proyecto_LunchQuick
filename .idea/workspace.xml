@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="ventana pago agregada y ticket modificada">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="Ventanass FinalesFinalisimas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +15,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -24,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="avance-2-" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,57 +44,69 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Guis.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Login.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Pago.executor&quot;: &quot;Run&quot;,
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.PagosTest and 2 more.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ServicioPedidosTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UsuarioTest.executor&quot;: &quot;Run&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fran&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;270&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Naxo&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ignacio/IdeaProjects/Proyecto_LunchQuick&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ignacio/IdeaProjects/Proyecto_LunchQuick/src/main/java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+    &quot;project.structure.proportion&quot;: &quot;0.15820312&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java" />
+      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main" />
+      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\Ventanas" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\org\example" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\Ventanas" />
+      <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\resources" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\org\example" />
       <recent name="C:\Users\Ignacio\IdeaProjects\Proyecto_LunchQuick\src\main\java\Datos" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.example" />
       <recent name="org" />
     </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="Dominio" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Pago">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Guis" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Guis" />
+      <module name="Proyecto_LunchQuick" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Ventanas.Login" />
+      <module name="Proyecto_LunchQuick" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Ventanas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Launcher.Main" />
       <module name="Proyecto_LunchQuick" />
@@ -110,68 +120,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Pago" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Ventanas.Pago" />
-      <module name="Proyecto_LunchQuick" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Ventanas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PagosTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Proyecto_LunchQuick" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="Dominio.PagosTest" />
-        <pattern testClass="Dominio.ServicioPedidosTest" />
-        <pattern testClass="Dominio.UsuarioTest" />
-      </patterns>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServicioPedidosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Proyecto_LunchQuick" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Dominio.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Dominio" />
-      <option name="MAIN_CLASS_NAME" value="Dominio.ServicioPedidosTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UsuarioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Proyecto_LunchQuick" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Dominio.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Dominio" />
-      <option name="MAIN_CLASS_NAME" value="Dominio.UsuarioTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Pago" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ServicioPedidosTest" />
-        <item itemvalue="JUnit.UsuarioTest" />
-        <item itemvalue="JUnit.PagosTest and 2 more" />
+        <item itemvalue="Application.Login" />
+        <item itemvalue="Application.Guis" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +143,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1717864485290</updated>
-      <workItem from="1720377448702" duration="8008000" />
     </task>
     <task id="LOCAL-00001" summary="comit">
       <option name="closed" value="true" />
@@ -232,91 +184,120 @@
       <option name="project" value="LOCAL" />
       <updated>1717968086327</updated>
     </task>
-    <task id="LOCAL-00006" summary="merge avance 2">
+    <task id="LOCAL-00006" summary="commit6 fixed">
       <option name="closed" value="true" />
-      <created>1718068394146</created>
+      <created>1718055159176</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1718068394146</updated>
+      <updated>1718055159176</updated>
     </task>
-    <task id="LOCAL-00007" summary="funcionando mostrar pedidos comprados por usuario">
+    <task id="LOCAL-00007" summary="commit6 fixed">
       <option name="closed" value="true" />
-      <created>1718077069779</created>
+      <created>1718055216875</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1718077069779</updated>
+      <updated>1718055216875</updated>
     </task>
-    <task id="LOCAL-00008" summary="funcionando mostrar pedidos comprados por usuario">
+    <task id="LOCAL-00008" summary="commit7 añadiendo ventanas">
       <option name="closed" value="true" />
-      <created>1718079570492</created>
+      <created>1719781068217</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1718079570492</updated>
+      <updated>1719781068217</updated>
     </task>
-    <task id="LOCAL-00009" summary="usuarios modificado">
+    <task id="LOCAL-00009" summary="commit7 añadiendo ventanas">
       <option name="closed" value="true" />
-      <created>1719700040408</created>
+      <created>1719781124337</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1719700040408</updated>
+      <updated>1719781124337</updated>
     </task>
-    <task id="LOCAL-00010" summary="Funcionando usuario cliente y el inicio de sesion fallido">
+    <task id="LOCAL-00010" summary="commit 8 ventanas nuevas">
       <option name="closed" value="true" />
-      <created>1719709675522</created>
+      <created>1719935324598</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1719709675522</updated>
+      <updated>1719935324598</updated>
     </task>
-    <task id="LOCAL-00011" summary="Funcionando el mostrar almuerzos admin, falta poder elimjinarlos bien">
+    <task id="LOCAL-00011" summary="commit 8 ventanas nuevas">
       <option name="closed" value="true" />
-      <created>1719714747162</created>
+      <created>1719935345910</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1719714747162</updated>
+      <updated>1719935345910</updated>
     </task>
-    <task id="LOCAL-00012" summary="corregido mostrar almuerzos por admin con codigo correcto">
+    <task id="LOCAL-00012" summary="commit 9 añadiendo mas ventanas">
       <option name="closed" value="true" />
-      <created>1719808925974</created>
+      <created>1720314399354</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1719808925974</updated>
+      <updated>1720314399354</updated>
     </task>
-    <task id="LOCAL-00013" summary="ventana pago agregada">
+    <task id="LOCAL-00013" summary="commit 9 añadiendo mas ventanas">
       <option name="closed" value="true" />
-      <created>1720318938816</created>
+      <created>1720314414427</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1720318938816</updated>
+      <updated>1720314414427</updated>
     </task>
-    <task id="LOCAL-00014" summary="ventana pago agregada y ticket">
+    <task id="LOCAL-00014" summary="commit 9 añadiendo mas ventanas juju">
       <option name="closed" value="true" />
-      <created>1720332780618</created>
+      <created>1720315510992</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1720332780618</updated>
+      <updated>1720315510992</updated>
     </task>
-    <task id="LOCAL-00015" summary="ventana pago agregada y ticket modificada">
+    <task id="LOCAL-00015" summary="commit 9 añadiendo mas ventanas juju">
       <option name="closed" value="true" />
-      <created>1720379192645</created>
+      <created>1720315529191</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1720379192645</updated>
+      <updated>1720315529191</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="commit 10 añadiendo mas ventanas juju">
+      <option name="closed" value="true" />
+      <created>1720397741875</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1720397741875</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Ventanass FinalesFinalisimas">
+      <option name="closed" value="true" />
+      <created>1720409003741</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1720409003741</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Ventanass FinalesFinalisimas">
+      <option name="closed" value="true" />
+      <created>1720411177248</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1720411177248</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Ventanass FinalesFinalisimas">
+      <option name="closed" value="true" />
+      <created>1720411191186</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1720411191186</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -333,17 +314,14 @@
     <MESSAGE value="comit" />
     <MESSAGE value="commit3" />
     <MESSAGE value="commit3 fixed" />
-    <MESSAGE value="merge avance 2" />
-    <MESSAGE value="funcionando mostrar pedidos comprados por usuario con mejoras" />
-    <MESSAGE value="funcionando mostrar pedidos comprados por usuario" />
-    <MESSAGE value="usuarios modificado" />
-    <MESSAGE value="Funcionando usuario cliente y el inicio de sesion fallido" />
-    <MESSAGE value="Funcionando el mostrar almuerzos admin, falta poder elimjinarlos bien" />
-    <MESSAGE value="corregido mostrar almuerzos por admin con codigo correcto" />
-    <MESSAGE value="ventana pago agregada" />
-    <MESSAGE value="ventana pago agregada y ticket" />
-    <MESSAGE value="ventana pago agregada y ticket modificada" />
-    <option name="LAST_COMMIT_MESSAGE" value="ventana pago agregada y ticket modificada" />
+    <MESSAGE value="commit6 fixed" />
+    <MESSAGE value="commit7 añadiendo ventanas" />
+    <MESSAGE value="commit 8 ventanas nuevas" />
+    <MESSAGE value="commit 9 añadiendo mas ventanas" />
+    <MESSAGE value="commit 9 añadiendo mas ventanas juju" />
+    <MESSAGE value="commit 10 añadiendo mas ventanas juju" />
+    <MESSAGE value="Ventanass FinalesFinalisimas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ventanass FinalesFinalisimas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -352,6 +330,11 @@
           <properties class="java.io.FileNotFoundException" package="java.io" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Ventanas/Register.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

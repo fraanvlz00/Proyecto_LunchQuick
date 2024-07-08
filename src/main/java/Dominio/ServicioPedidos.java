@@ -308,7 +308,7 @@ public class ServicioPedidos {
 		return sb.toString();
 	}
 
-	public void verAlmuerzosComprados(Cliente cliente) {
+
 	public String verAlmuerzosComprados(Cliente cliente) {
 		StringBuilder historial = new StringBuilder();
 		try {
@@ -347,6 +347,3 @@ public class ServicioPedidos {
 	}
 }
 
-		return historial.length() > 0 ? historial.toString() : "No se encontraron compras para este cliente.";
-	}
-}
