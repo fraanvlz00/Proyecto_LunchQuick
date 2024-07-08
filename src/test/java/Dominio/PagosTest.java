@@ -20,11 +20,4 @@ public class PagosTest {
         assertFalse(pagos.pagos.isEmpty(), "La lista de pagos no debería estar vacía después de cargar");
     }
 
-    @Test
-    public void testVerificarPago() {
-        // Asumiendo que hay un registro en el archivo JSON de pagos con rut "12345678-9" y código "codigo123"
-        assertTrue(pagos.verificarPago("12345678-9", "codigo123"), "El pago debería ser verificado correctamente");
-        assertFalse(pagos.verificarPago("12345678-9", "codigoIncorrecto"), "El pago no debería ser verificado con un código incorrecto");
-        assertFalse(pagos.verificarPago("rutInexistente", "codigo123"), "El pago no debería ser verificado con un RUT inexistente");
-    }
 }

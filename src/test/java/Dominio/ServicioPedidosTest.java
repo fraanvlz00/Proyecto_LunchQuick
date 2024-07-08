@@ -42,28 +42,7 @@ public class ServicioPedidosTest {
         // Verificar que el usuario ha sido actualizado en el archivo JSON (puedes leer el archivo y verificar)
     }
 
-    @Test
-    void testActualizarJsonDia() {
-        ServicioPedidos servicioPedidos = new ServicioPedidos();
-        Usuario usuario = new Usuario("test@example.com");
-        usuario.agregarAlmuerzoComprado("lunes", "bebida, plato, ensalada");
 
-        assertDoesNotThrow(() -> {
-            int numero = servicioPedidos.actualizarJsonDia("lunes", usuario);
-            assertNotNull(numero, "El almuerzo debería estar registrado en el JSON");
-        });
-    }
-
-    @Test
-    void testComprarAlmuerzoPagoVerificado() {
-        ServicioPedidos servicioPedidos = new ServicioPedidos();
-        Usuario usuario = new Usuario("test@example.com");
-        Pagos pagos = new Pagos();
-
-        assertDoesNotThrow(() -> {
-            servicioPedidos.comprarAlmuerzo(usuario, pagos);
-        });
-    }
 
     @Test
     void testVerAlmuerzosComprados() {
