@@ -18,17 +18,19 @@ public class MainWindow {
 
     private void showMenuPrincipal() {
         MenuPrincipalAdmin menuPrincipalAdmin = new MenuPrincipalAdmin();
-        menuPrincipalAdmin.setOnPedidosPendientes(this::showDiaPedidoAdmin);
+        menuPrincipalAdmin.setOnPedidosPendientes(this::showPedidoGUI); // Actualizamos esto para abrir PedidoGUI
+        menuPrincipalAdmin.setOnSalir(this::showLogin);
 
         frame.setContentPane(menuPrincipalAdmin.getPanel1());
         configureFrame("MenuPrincipalAdmin");
     }
 
-    private void showDiaPedidoAdmin() {
-        DiaPedidoAdmin diaPedidoAdmin = new DiaPedidoAdmin();
+    private void showPedidoGUI() {
+        PedidoGUI pedidoGUI = new PedidoGUI();
+        pedidoGUI.setOnVolver(this::showMenuPrincipal); // Método para el botón volver
 
-        frame.setContentPane(diaPedidoAdmin.getPanel1());
-        configureFrame("DiaPedidoAdmin");
+        frame.setContentPane(pedidoGUI.getPanel1());
+        configureFrame("PedidoGUI");
     }
 
     private void configureFrame(String title) {

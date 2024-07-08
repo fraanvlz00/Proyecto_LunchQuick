@@ -5,6 +5,7 @@ public class MenuPrincipalAdmin {
     private JButton pedidosPendientesButton;
     private JButton salirButton;
     private Runnable onPedidosPendientes;
+    private Runnable onSalir;
 
     public MenuPrincipalAdmin() {
         pedidosPendientesButton.addActionListener(e -> {
@@ -14,8 +15,9 @@ public class MenuPrincipalAdmin {
         });
 
         salirButton.addActionListener(e -> {
-            JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(panel1);
-            currentFrame.dispose();
+            if (onSalir != null) {
+                onSalir.run();
+            }
         });
     }
 
@@ -25,5 +27,9 @@ public class MenuPrincipalAdmin {
 
     public void setOnPedidosPendientes(Runnable onPedidosPendientes) {
         this.onPedidosPendientes = onPedidosPendientes;
+    }
+
+    public void setOnSalir(Runnable onSalir) {
+        this.onSalir = onSalir;
     }
 }
