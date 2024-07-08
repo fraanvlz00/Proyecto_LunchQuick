@@ -129,8 +129,8 @@ public class MenuCompra extends JFrame implements ActionListener, FocusListener 
 
         }
         else if (e.getSource() ==btnPagarEco ) {
-            Pago pagar = new Pago(servicioPedidos,cliente,pago);
-            pagar.PantallaPago();
+            Pago pagar = new Pago();
+            pagar.Pantalla();
             setVisible(false);
         }
     }

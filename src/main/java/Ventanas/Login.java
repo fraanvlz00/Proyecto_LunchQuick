@@ -19,6 +19,7 @@ public class Login extends JFrame implements ActionListener, FocusListener {
     private JTextField txfEmail;
     private JButton btnLogin;
     private JButton btnRegister;
+    private Usuario usuario;
 
     public Login() {
     }
@@ -40,15 +41,11 @@ public class Login extends JFrame implements ActionListener, FocusListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnRegister) {
-            String correo = txfEmail.getText();
-            String contraseña = String.valueOf(pfPass.getPassword());
-            ControladorLogin cl = new ControladorLogin();
-            Usuario usuario = new Usuario(correo, contraseña, null);
             Register register = new Register(usuario);
             register.PantallaRegi();
             setVisible(false);
         }
-        if (e.getSource() == btnLogin) {
+       else if (e.getSource() == btnLogin) {
             String correo = txfEmail.getText();
             String contraseña = String.valueOf(pfPass.getPassword());
             ControladorLogin cl = new ControladorLogin();

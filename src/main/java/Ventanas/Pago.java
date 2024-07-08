@@ -3,72 +3,59 @@ package Ventanas;
 import Dominio.Cliente;
 import Dominio.Pagos;
 import Dominio.ServicioPedidos;
+import Dominio.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
-public class Pago extends JFrame implements ActionListener {
+public class Pago extends JFrame implements ActionListener, FocusListener {
     private JPanel panel1;
     private JTextField textField1;
     private JPasswordField passwordField1;
     private JButton btnPagar;
     private JLabel lbRut;
     private JLabel lbCodigoBaes;
-    private JButton volverButton;
+    private JButton btnVolver;
+    private JPanel jpPagos;
 
     private ServicioPedidos servicioPedidos;
     private Cliente cliente;
     private Pagos pagos;
+    private Usuario usuario;
 
-    public Pago(ServicioPedidos servicioPedidos, Cliente cliente, Pagos pagos) {
-
+    public Pago() {
+        this.usuario = usuario;
+        this.pagos = new Pagos();
+        this.servicioPedidos = new ServicioPedidos();
     }
 
-    public void PantallaPago() {
-        this.servicioPedidos = servicioPedidos;
-        this.cliente = cliente;
-        this.pagos = pagos;
-
-        // Inicializa los componentes
-        panel1 = new JPanel();
-        textField1 = new JTextField(20);
-        passwordField1 = new JPasswordField(20);
-        btnPagar = new JButton("Pagar");
-        volverButton = new JButton("Volver");
-        lbRut = new JLabel("RUT:");
-        lbCodigoBaes = new JLabel("Código BAES:");
-
-        // Configura el layout del panel
-        panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
-        panel1.add(lbRut);
-        panel1.add(textField1);
-        panel1.add(lbCodigoBaes);
-        panel1.add(passwordField1);
-        panel1.add(btnPagar);
-        panel1.add(volverButton);
-
-        // Añade listeners
-        btnPagar.addActionListener(this);
-        volverButton.addActionListener(this);
-
-        // Configura el JFrame
-        setContentPane(panel1);
-        setSize(400, 300);
+    public void Pantalla() {
+        setSize(500, 500);
         setTitle("Pago");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
+        setContentPane(jpPagos);
         setVisible(true);
-
+        jpPagos.setFocusable(true);
+        jpPagos.requestFocusInWindow();
+        btnPagar.addActionListener(this);
+        btnVolver.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnPagar) {
             procesarPago();
-        } else if (e.getSource() == volverButton) {
-            // Volver a la ventana anterior o cerrar la ventana de pago
+            Ticket ticket = new Ticket();
+            ticket.Pantalla();
+            this.dispose();
+        }
+        else if (e.getSource() == btnVolver) {
+
             this.dispose();
         }
     }
@@ -80,19 +67,21 @@ public class Pago extends JFrame implements ActionListener {
         if (pagos.verificarPago(rut, codigoBaes)) {
             JOptionPane.showMessageDialog(this, "Pago verificado.");
 
-            // Realizar la compra del almuerzo y obtener los detalles
-            servicioPedidos.comprarAlmuerzo(cliente, pagos);
-
-            // Obtener los detalles del almuerzo comprado y el número de retiro
             String almuerzoComprado = servicioPedidos.getDetallesAlmuerzoComprado();
             int numeroRetiro = servicioPedidos.getNumeroRetiro();
 
-            // Abrir la ventana de Ticket
-            Ticket ticketVentana = new Ticket(cliente, almuerzoComprado, numeroRetiro);
-            ticketVentana.setVisible(true);
-            this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Pago no verificado o no disponible, no se puede agregar el pedido. Inténtelo nuevamente.");
         }
+    }
+
+    @Override
+    public void focusGained(FocusEvent e) {
+
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+
     }
 }

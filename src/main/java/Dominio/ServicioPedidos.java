@@ -274,40 +274,6 @@ public class ServicioPedidos {
 		mapper.writerWithDefaultPrettyPrinter().writeValue(archivo, root);
 	}
 
-	public String mostrarHistorial(Usuario usuario) {
-		StringBuilder sb = new StringBuilder();
-		try (FileReader reader = new FileReader("src/main/java/Datos/dia.json")) {
-			JSONObject jsonObject = new JSONObject(new JSONTokener(reader));
-			JSONObject dia = jsonObject.getJSONObject("dia");
-
-			for (String diaKey : dia.keySet()) {
-				JSONObject diaObj = dia.getJSONObject(diaKey);
-				JSONObject almuerzosComprados = diaObj.getJSONObject("almuerzosComprados");
-
-				for (String almuerzoKey : almuerzosComprados.keySet()) {
-					JSONObject almuerzo = almuerzosComprados.getJSONObject(almuerzoKey);
-					String correo = almuerzo.getString("correoElectronico");
-
-					if (correo.equals(usuario.getCorreoElectronico())) {
-						JSONArray detalles = almuerzo.getJSONArray("detalles");
-
-						sb.append("Día: ").append(diaKey).append("\n");
-						sb.append("Almuerzo ").append(almuerzoKey).append(":\n");
-						sb.append("Correo: ").append(correo).append("\n");
-						sb.append("Detalles:\n");
-						for (int i = 0; i < detalles.length(); i++) {
-							sb.append(((JSONArray) detalles).getString(i)).append("\n");
-						}
-						sb.append("\n");
-					}
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return sb.toString();
-	}
-
 
 	public String verAlmuerzosComprados(Cliente cliente) {
 		StringBuilder historial = new StringBuilder();
