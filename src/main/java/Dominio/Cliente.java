@@ -10,11 +10,4 @@ public class Cliente extends Usuario {
         this.almuerzosComprados = new HashMap<>();
     }
 
-    public void agregarAlmuerzoComprado(String dia, String detalles) {
-        almuerzosComprados.put(dia, detalles);
-    }
-
-    public HashMap<String, String> getAlmuerzosComprados() {
-        return almuerzosComprados;
-    }
 }

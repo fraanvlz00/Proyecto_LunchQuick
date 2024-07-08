@@ -21,6 +21,8 @@ public class ServicioPedidos {
 	private JsonNode rootMenus;
 	private final ObjectMapper mapper;
 	private final Scanner scanner;
+	private String detallesAlmuerzoComprado;
+	private int numeroRetiro;
 
 	public ServicioPedidos() {
 		mapper = new ObjectMapper();
@@ -85,10 +87,10 @@ public class ServicioPedidos {
 		Menu menu = obtenerMenu(dia, tipoMenu);
 		if (menu == null) return;
 
-		String almuerzoComprado = seleccionarDetallesMenu(menu);
+		detallesAlmuerzoComprado = seleccionarDetallesMenu(menu);
 
-		mostrarResumenCompra(cliente, menu, almuerzoComprado);
-		procesarCompra(cliente, pagos, dia, almuerzoComprado, menu.getPrecio());
+		mostrarResumenCompra(cliente, menu, detallesAlmuerzoComprado);
+		procesarCompra(cliente, pagos, dia, detallesAlmuerzoComprado, menu.getPrecio());
 	}
 
 	private String seleccionarDia() {
@@ -205,8 +207,8 @@ public class ServicioPedidos {
 		if (pagos.verificarPago(rut, codigoPago)) {
 			System.out.println("Pago verificado.");
 			try {
-				int numeroAsignado = actualizarJsonDia(dia, cliente, almuerzoComprado);
-				System.out.println("El número de retiro de su almuerzo es: " + numeroAsignado);
+				numeroRetiro = actualizarJsonDia(dia, cliente, almuerzoComprado);
+				System.out.println("El número de retiro de su almuerzo es: " + numeroRetiro);
 			} catch (IOException e) {
 				System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
 			}
@@ -272,6 +274,41 @@ public class ServicioPedidos {
 		mapper.writerWithDefaultPrettyPrinter().writeValue(archivo, root);
 	}
 
+	public String mostrarHistorial(Usuario usuario) {
+		StringBuilder sb = new StringBuilder();
+		try (FileReader reader = new FileReader("src/main/java/Datos/dia.json")) {
+			JSONObject jsonObject = new JSONObject(new JSONTokener(reader));
+			JSONObject dia = jsonObject.getJSONObject("dia");
+
+			for (String diaKey : dia.keySet()) {
+				JSONObject diaObj = dia.getJSONObject(diaKey);
+				JSONObject almuerzosComprados = diaObj.getJSONObject("almuerzosComprados");
+
+				for (String almuerzoKey : almuerzosComprados.keySet()) {
+					JSONObject almuerzo = almuerzosComprados.getJSONObject(almuerzoKey);
+					String correo = almuerzo.getString("correoElectronico");
+
+					if (correo.equals(usuario.getCorreoElectronico())) {
+						JSONArray detalles = almuerzo.getJSONArray("detalles");
+
+						sb.append("Día: ").append(diaKey).append("\n");
+						sb.append("Almuerzo ").append(almuerzoKey).append(":\n");
+						sb.append("Correo: ").append(correo).append("\n");
+						sb.append("Detalles:\n");
+						for (int i = 0; i < detalles.length(); i++) {
+							sb.append(((JSONArray) detalles).getString(i)).append("\n");
+						}
+						sb.append("\n");
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sb.toString();
+	}
+
+	public void verAlmuerzosComprados(Cliente cliente) {
 	public String verAlmuerzosComprados(Cliente cliente) {
 		StringBuilder historial = new StringBuilder();
 		try {
@@ -301,7 +338,15 @@ public class ServicioPedidos {
 		return historial.toString();
 	}
 
+	public String getDetallesAlmuerzoComprado() {
+		return detallesAlmuerzoComprado;
+	}
 
+	public int getNumeroRetiro() {
+		return numeroRetiro;
+	}
+}
 
-
+		return historial.length() > 0 ? historial.toString() : "No se encontraron compras para este cliente.";
+	}
 }

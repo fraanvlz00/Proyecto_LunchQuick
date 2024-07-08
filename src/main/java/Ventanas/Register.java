@@ -20,6 +20,7 @@ public class Register extends JFrame implements ActionListener, FocusListener {
     public Register(Usuario usuario) {
 
         this.usuario = usuario;
+        PantallaRegi();
     }
     public void PantallaRegi(){
         setSize(500,500);
@@ -39,11 +40,11 @@ public class Register extends JFrame implements ActionListener, FocusListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnVolverRegi){
-            Login login = new Login();
-            login.Pantalla();
-            setVisible(false);
+          Login login = new Login();
+          login.Pantalla();
+          setVisible(false);
         }
-        else if(e.getSource() == btnConfirmarRegi){
+        if(e.getSource() == btnConfirmarRegi){
             //En este caso, se podría conectar con la base de datos y crear el usuario
             String correo = txfEmailRegi.getText();
             String contraseña = String.valueOf(pfPassRegi.getPassword());
