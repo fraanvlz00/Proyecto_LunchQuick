@@ -5,6 +5,7 @@ import Dominio.Usuario;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Ticket extends JFrame implements ActionListener {
     private JPanel panel1;
@@ -12,6 +13,9 @@ public class Ticket extends JFrame implements ActionListener {
     private JTextArea txtDetalles;
     private JButton btnvolverTicket;
     private JPanel jpTicket;
+    private JLabel lbRetiro;
+    private JLabel lblDetalles;
+    private JLabel lblAlmuerzo;
     private Usuario usuario;
 
     public void Pantalla() {
@@ -27,7 +31,9 @@ public class Ticket extends JFrame implements ActionListener {
         btnvolverTicket.addActionListener(this);
     }
 
-    public Ticket() {
+    public Ticket(ArrayList pagosRealizados) {
+        lblAlmuerzo.setText((String) pagosRealizados.get(0));
+        lblNumeroRetiro.setText((String) pagosRealizados.get(1));
     }
 
     @Override

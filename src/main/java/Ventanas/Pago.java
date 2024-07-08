@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
 
 public class Pago extends JFrame implements ActionListener, FocusListener {
     private JPanel panel1;
@@ -49,9 +50,11 @@ public class Pago extends JFrame implements ActionListener, FocusListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnPagar) {
-            procesarPago();
-            Ticket ticket = new Ticket();
-            ticket.Pantalla();
+            ArrayList pagosRealizados = procesarPago();
+            if (pagosRealizados.size() != 0){
+                 Ticket ticket = new Ticket(pagosRealizados);
+                 ticket.Pantalla();
+            }
             this.dispose();
         }
         else if (e.getSource() == btnVolver) {
@@ -60,18 +63,26 @@ public class Pago extends JFrame implements ActionListener, FocusListener {
         }
     }
 
-    private void procesarPago() {
+    private ArrayList procesarPago() {
         String rut = textField1.getText();
         String codigoBaes = new String(passwordField1.getPassword());
+        ArrayList pagosRealizados = new ArrayList<>();
 
         if (pagos.verificarPago(rut, codigoBaes)) {
             JOptionPane.showMessageDialog(this, "Pago verificado.");
 
             String almuerzoComprado = servicioPedidos.getDetallesAlmuerzoComprado();
-            int numeroRetiro = servicioPedidos.getNumeroRetiro();
+            String numeroRetiro = Integer.toString(servicioPedidos.getNumeroRetiro()) ;
+
+            pagosRealizados.add(almuerzoComprado);
+            pagosRealizados.add(numeroRetiro);
+            System.out.println(almuerzoComprado);
+            System.out.println(numeroRetiro);
+            return pagosRealizados;
 
         } else {
             JOptionPane.showMessageDialog(this, "Pago no verificado o no disponible, no se puede agregar el pedido. Inténtelo nuevamente.");
+            return pagosRealizados;
         }
     }
 
