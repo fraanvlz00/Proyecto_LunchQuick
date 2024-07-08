@@ -1,0 +1,47 @@
+{
+  "dia" : {
+    "miércoles" : {
+      "almuerzosComprados" : { }
+    },
+    "martes" : {
+      "almuerzosComprados" : {
+        "1" : {
+          "detalles" : [ "jugo de naranja", "pollo con papas", "espinaca", "gelatina" ],
+          "correoElectronico" : "fran"
+        },
+        "2" : {
+          "detalles" : [ "jugo de naranja", "pollo con papas", "espinaca", "gelatina" ],
+          "correoElectronico" : "fran"
+        }
+      }
+    },
+    "jueves" : {
+      "almuerzosComprados" : {
+        "1" : {
+          "detalles" : [ "jugo de piña", "arroz con pollo", "lechuga", "mousse de chocolate" ],
+          "correoElectronico" : "fran"
+        }
+      }
+    },
+    "lunes" : {
+      "almuerzosComprados" : {
+        "2" : {
+          "detalles" : [ "sprite", "papas con carne", "lechuga", "flan" ],
+          "correoElectronico" : "maria.garcia@example.com"
+        },
+        "3" : {
+          "detalles" : [ "fanta", "papas con carne", "lechuga", "flan" ],
+          "correoElectronico" : "knekro"
+        }
+      }
+    },
+    "viernes" : {
+      "almuerzosComprados" : {
+        "1" : {
+          "detalles" : [ "limonada", "pastel de choclo", "coleslaw", "tarta de manzana" ],
+          "correoElectronico" : "fran"
+        }
+      }
+    }
+  }
+}
