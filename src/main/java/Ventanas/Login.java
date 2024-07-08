@@ -21,10 +21,10 @@ public class Login extends JFrame implements ActionListener, FocusListener {
     private JButton btnRegister;
 
     public Login() {
-
     }
-    public void Pantalla(){
-        setSize(500,500);
+
+    public void Pantalla() {
+        setSize(500, 500);
         setTitle("Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -35,46 +35,40 @@ public class Login extends JFrame implements ActionListener, FocusListener {
         JPLogin.requestFocusInWindow();
         btnLogin.addActionListener(this);
         btnRegister.addActionListener(this);
-
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       if (e.getSource() == btnRegister){
-           // INICIAR PANTALLA Register
-           Register register = new Register();
-           register.PantallaRegi();
-           setVisible(false);
+        if (e.getSource() == btnRegister) {
+            String correo = txfEmail.getText();
+            String contraseña = String.valueOf(pfPass.getPassword());
+            ControladorLogin cl = new ControladorLogin();
+            Usuario usuario = new Usuario(correo, contraseña, null);
+            Register register = new Register(usuario);
+            register.PantallaRegi();
+            setVisible(false);
         }
-       if (e.getSource() == btnLogin){
-           // VALIDAR LOGIN
-           // SI CORRECTO, INICIAR PANTALLA PRINCIPAL
-           // SI INCORRECTO, MOSTRAR MENSAJE DE ERROR
-           String correo = txfEmail.getText();
-           String contraseña = String.valueOf(pfPass.getPassword());
-           ControladorLogin cl = new ControladorLogin();
-           Usuario result = cl.verificarCredenciales(correo,contraseña);
-           if(result != null){
-               JOptionPane.showMessageDialog(this,"Login exitoso!");
-               Comprar comprar = new Comprar();
-               comprar.PantallaCompra();
-               setVisible(false);
-           }
-           else{
-               JOptionPane.showMessageDialog(this,"Error al Logear usuario!");
-           }
-       }
+        if (e.getSource() == btnLogin) {
+            String correo = txfEmail.getText();
+            String contraseña = String.valueOf(pfPass.getPassword());
+            ControladorLogin cl = new ControladorLogin();
+            Usuario result = cl.verificarCredenciales(correo, contraseña);
+            if (result != null) {
+                JOptionPane.showMessageDialog(this, "Login exitoso!");
+                Comprar comprar = new Comprar(result);
+                comprar.PantallaCompra();
+                setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al Logear usuario!");
+            }
+        }
     }
 
     @Override
     public void focusGained(FocusEvent e) {
-
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-
     }
 }
-

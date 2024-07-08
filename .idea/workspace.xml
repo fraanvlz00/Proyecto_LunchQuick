@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="commit 9 añadiendo mas ventanas">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="commit 9 añadiendo mas ventanas juju">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompraEjecutivo.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompraEjecutivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompraVegano.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompraVegano.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +251,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720314414427</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="commit 9 añadiendo mas ventanas juju">
+      <option name="closed" value="true" />
+      <created>1720315510992</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1720315510992</updated>
+    </task>
+    <task id="LOCAL-00015" summary="commit 9 añadiendo mas ventanas juju">
+      <option name="closed" value="true" />
+      <created>1720315529191</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1720315529191</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,7 +289,8 @@
     <MESSAGE value="commit7 añadiendo ventanas" />
     <MESSAGE value="commit 8 ventanas nuevas" />
     <MESSAGE value="commit 9 añadiendo mas ventanas" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 9 añadiendo mas ventanas" />
+    <MESSAGE value="commit 9 añadiendo mas ventanas juju" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 9 añadiendo mas ventanas juju" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

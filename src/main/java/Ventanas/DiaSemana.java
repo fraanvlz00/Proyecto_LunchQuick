@@ -1,6 +1,7 @@
 package Ventanas;
 
 import Dominio.ServicioPedidos;
+import Dominio.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,8 +16,14 @@ public class DiaSemana extends JFrame implements ActionListener, FocusListener {
     private JButton btnDiaVolver;
     private JLabel lblDiaElgido;
     private JLabel lblLunchDia;
+    private Usuario usuario;
+    private ServicioPedidos servicioPedidos;
 
-    public DiaSemana() {}
+    public DiaSemana() {
+        servicioPedidos = new ServicioPedidos();
+
+    }
+
 
     public void PantallaDia(){
         setSize(500,500);
@@ -39,12 +46,13 @@ public class DiaSemana extends JFrame implements ActionListener, FocusListener {
             String diaElegido = (String) cbDia.getSelectedItem();
             lblDiaElgido.setText("Día elegido: " + diaElegido);
             lblLunchDia.setText("Lunch del día: " + diaElegido);
-            //poner la siguiente ventana osea el menu compra
-            ServicioPedidos servicioPedidos = new ServicioPedidos();
+            ElegirTipoMenu elegirTipoMenu = new ElegirTipoMenu();
+            elegirTipoMenu.PantallaMenu();
+            setVisible(false);
 
         }
         if (e.getSource() == btnDiaVolver){
-           Comprar comprar = new Comprar();
+           Comprar comprar = new Comprar(usuario);
            comprar.PantallaCompra();
            setVisible(false);
 

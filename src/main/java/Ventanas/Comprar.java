@@ -1,6 +1,6 @@
 package Ventanas;
 
-import Dominio.Cliente;
+import Dominio.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,11 +15,15 @@ public class Comprar extends JFrame implements ActionListener, FocusListener {
     private JButton btnHistorialC;
     private JButton btnSalirCompra;
     private JLabel lblComprar;
-    private Cliente cliente;
+    private Usuario usuario;
+
+    public Comprar(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public void PantallaCompra() {
         setSize(500, 500);
-        setTitle("Login");
+        setTitle("Compra");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -30,37 +34,32 @@ public class Comprar extends JFrame implements ActionListener, FocusListener {
         btnComprar.addActionListener(this);
         btnHistorialC.addActionListener(this);
         btnSalirCompra.addActionListener(this);
-        cliente = new Cliente("John Doe", "johndoe@example.com");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnSalirCompra) {
-            Login log = new Login ();
+            Login log = new Login();
             log.Pantalla();
             setVisible(false);
         }
         if (e.getSource() == btnHistorialC) {
-            Historial historial = new Historial (cliente);
+            Historial historial = new Historial(usuario);
             historial.PantallaHistorial();
             setVisible(false);
-
         }
         if (e.getSource() == btnComprar) {
-            DiaSemana diaSemana = new DiaSemana ();
+            DiaSemana diaSemana = new DiaSemana();
             diaSemana.PantallaDia();
             setVisible(false);
-
         }
     }
 
     @Override
     public void focusGained(FocusEvent e) {
-
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-
     }
 }
