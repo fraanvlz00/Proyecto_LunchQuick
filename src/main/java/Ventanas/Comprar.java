@@ -55,6 +55,8 @@ public class Comprar extends JFrame implements ActionListener, FocusListener {
         }
     }
 
+
+
     @Override
     public void focusGained(FocusEvent e) {
     }

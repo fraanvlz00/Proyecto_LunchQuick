@@ -274,7 +274,6 @@ public class ServicioPedidos {
 		mapper.writerWithDefaultPrettyPrinter().writeValue(archivo, root);
 	}
 
-
 	public String verAlmuerzosComprados(Cliente cliente) {
 		StringBuilder historial = new StringBuilder();
 		try {
