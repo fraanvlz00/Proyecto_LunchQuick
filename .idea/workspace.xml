@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="commit 9 añadiendo mas ventanas juju">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompraEjecutivo.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompraEjecutivo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompraVegano.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompraVegano.java" beforeDir="false" />
-    </list>
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="commit 10 añadiendo mas ventanas juju" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -267,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720315529191</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="commit 10 añadiendo mas ventanas juju">
+      <option name="closed" value="true" />
+      <created>1720397741875</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1720397741875</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -290,7 +292,8 @@
     <MESSAGE value="commit 8 ventanas nuevas" />
     <MESSAGE value="commit 9 añadiendo mas ventanas" />
     <MESSAGE value="commit 9 añadiendo mas ventanas juju" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 9 añadiendo mas ventanas juju" />
+    <MESSAGE value="commit 10 añadiendo mas ventanas juju" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 10 añadiendo mas ventanas juju" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
