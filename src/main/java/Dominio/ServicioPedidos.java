@@ -4,8 +4,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Iterator;
@@ -39,6 +43,39 @@ public class ServicioPedidos {
 			throw new IOException("Archivo JSON no encontrado en la ruta especificada: " + archivo.getAbsolutePath());
 		}
 		return mapper.readTree(archivo);
+	}
+	public String mostrarHistorial(Usuario usuario) {
+		StringBuilder sb = new StringBuilder();
+		try (FileReader reader = new FileReader("src/main/java/Datos/dia.json")) {
+			JSONObject jsonObject = new JSONObject(new JSONTokener(reader));
+			JSONObject dia = jsonObject.getJSONObject("dia");
+
+			for (String diaKey : dia.keySet()) {
+				JSONObject diaObj = dia.getJSONObject(diaKey);
+				JSONObject almuerzosComprados = diaObj.getJSONObject("almuerzosComprados");
+
+				for (String almuerzoKey : almuerzosComprados.keySet()) {
+					JSONObject almuerzo = almuerzosComprados.getJSONObject(almuerzoKey);
+					String correo = almuerzo.getString("correoElectronico");
+
+					if (correo.equals(usuario.getCorreoElectronico())) {
+						JSONArray detalles = almuerzo.getJSONArray("detalles");
+
+						sb.append("Día: ").append(diaKey).append("\n");
+						sb.append("Almuerzo ").append(almuerzoKey).append(":\n");
+						sb.append("Correo: ").append(correo).append("\n");
+						sb.append("Detalles:\n");
+						for (int i = 0; i < detalles.length(); i++) {
+							sb.append(((JSONArray) detalles).getString(i)).append("\n");
+						}
+						sb.append("\n");
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sb.toString();
 	}
 
 	public void comprarAlmuerzo(Cliente cliente, Pagos pagos) {
@@ -84,7 +121,7 @@ public class ServicioPedidos {
 		return tipoMenu.equals("vegetariano") || tipoMenu.equals("economico") || tipoMenu.equals("ejecutivo") || tipoMenu.equals("baes");
 	}
 
-	private Menu obtenerMenu(String dia, String tipoMenu) {
+	public Menu obtenerMenu(String dia, String tipoMenu) {
 		JsonNode menusNode = cargarMenusDelDia(dia);
 		if (menusNode == null) return null;
 		return Menu.fromJsonNode(menusNode.get(tipoMenu));
@@ -235,7 +272,8 @@ public class ServicioPedidos {
 		mapper.writerWithDefaultPrettyPrinter().writeValue(archivo, root);
 	}
 
-	public void verAlmuerzosComprados(Cliente cliente) {
+	public String verAlmuerzosComprados(Cliente cliente) {
+		StringBuilder historial = new StringBuilder();
 		try {
 			// Recargar el archivo JSON para asegurar que los datos más recientes se lean
 			rootDias = cargarArchivoJson("src/main/java/Datos/dia.json");
@@ -249,10 +287,10 @@ public class ServicioPedidos {
 						Map.Entry<String, JsonNode> almuerzoEntry = itAlmuerzos.next();
 						JsonNode almuerzoNode = almuerzoEntry.getValue();
 						if (almuerzoNode.get("correoElectronico").asText().equals(cliente.getCorreoElectronico())) {
-							System.out.println("Día: " + dia);
-							System.out.println("Código de retiro: " + almuerzoEntry.getKey());
-							System.out.println("Detalles: " + almuerzoNode.get("detalles"));
-							System.out.println("-----------");
+							historial.append("Día: ").append(dia).append("\n");
+							historial.append("Código de retiro: ").append(almuerzoEntry.getKey()).append("\n");
+							historial.append("Detalles: ").append(almuerzoNode.get("detalles")).append("\n");
+							historial.append("-----------\n");
 						}
 					}
 				}
@@ -260,38 +298,10 @@ public class ServicioPedidos {
 		} catch (Exception e) {
 			System.out.println("Error al leer los almuerzos comprados: " + e.getMessage());
 		}
+		return historial.toString();
 	}
-	public String obtenerHistorialCompras() {
-		StringBuilder historial = new StringBuilder();
-		ObjectMapper mapper = new ObjectMapper();
-		File file = new File("src/main/java/Datos/compras.json");
 
-		try {
-			JsonNode rootNode = mapper.readTree(file);
-			JsonNode comprasNode = rootNode.get("compras");
-			if (comprasNode.isArray()) {
-				for (JsonNode compraNode : comprasNode) {
-					if (compraNode.get("correoElectronico").asText().equals(correoElectronicoCliente)) {
-						historial.append("Fecha: ").append(compraNode.get("fecha").asText()).append("\n");
-						historial.append("Detalles: ");
-						JsonNode detallesNode = compraNode.get("detalles");
-						if (detallesNode.isArray()) {
-							for (JsonNode detalleNode : detallesNode) {
-								historial.append(detalleNode.asText()).append(", ");
-							}
-							if (historial.toString().endsWith(", ")) {
-								historial.setLength(historial.length() - 2); // Eliminar la última coma y espacio
-							}
-						}
-						historial.append("\n-----------\n");
-					}
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "Error al leer el historial de compras.";
-		}
 
-		return historial.length() > 0 ? historial.toString() : "No se encontraron compras para este cliente.";
-	}
+
+
 }
