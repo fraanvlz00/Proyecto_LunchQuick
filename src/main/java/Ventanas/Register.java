@@ -1,6 +1,7 @@
 package Ventanas;
 
 import Dominio.ControladorLogin;
+import Dominio.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +16,12 @@ public class Register extends JFrame implements ActionListener, FocusListener {
     private JLabel lblRegi;
     private JButton btnVolverRegi;
     private JButton btnConfirmarRegi;
+    private Usuario usuario;
+    public Register(Usuario usuario) {
 
+        this.usuario = usuario;
+        PantallaRegi();
+    }
     public void PantallaRegi(){
         setSize(500,500);
         setTitle("Register");

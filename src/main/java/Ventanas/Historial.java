@@ -1,7 +1,7 @@
 package Ventanas;
 
-import Dominio.Cliente;
 import Dominio.ServicioPedidos;
+import Dominio.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -9,23 +9,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+
 public class Historial extends JFrame implements ActionListener, FocusListener {
-    private JPanel panel1;
     private JTextArea textArea2;
     private JTextArea txaMHistorial;
     private JButton btnVolverH;
     private JPanel jpHistorial;
     private JButton btnMHistorial;
-    private Cliente cliente;
+    private Usuario usuario;
+    private ServicioPedidos servicioPedidos;
 
-    public Historial(Cliente cliente) {
-        this.cliente = cliente;
-        PantallaHistorial();
+    public Historial(Usuario usuario) {
+        this.usuario = usuario;
+        this.servicioPedidos = new ServicioPedidos();
     }
 
-    public void PantallaHistorial(){
-        setSize(500,500);
-        setTitle("ElegirDia");
+    public void PantallaHistorial() {
+        setSize(500, 500);
+        setTitle("Historial");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -36,35 +37,26 @@ public class Historial extends JFrame implements ActionListener, FocusListener {
         btnVolverH.addActionListener(this);
         btnMHistorial.addActionListener(this);
     }
-    public void setHistorialCompras(String historialCompras) {
-        txaMHistorial.setText(historialCompras);
-        txaMHistorial.setEditable(true);
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (e.getSource() == btnVolverH) {
-            Comprar comprar = new Comprar();
+            Comprar comprar = new Comprar(usuario);
             comprar.PantallaCompra();
             setVisible(false);
         }
         if (e.getSource() == btnMHistorial) {
-            ServicioPedidos servicioPedidos = new ServicioPedidos();
-            String historialCompras = servicioPedidos.verAlmuerzosComprados(cliente);
-            setHistorialCompras(historialCompras);
+            String historial = servicioPedidos.mostrarHistorial(usuario);
+            txaMHistorial.setText(historial);
         }
-        }
+    }
+
 
     @Override
     public void focusGained(FocusEvent e) {
-
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-
     }
 }
-
-
