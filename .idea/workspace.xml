@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Datos/dia.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/dia.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Comprar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Comprar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Historial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Historial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.java" afterDir="false" />
@@ -49,7 +55,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Guis.executor": "Run",
     "Application.Login.executor": "Run",
-    "Application.Main.executor": "Run",
+    "Application.Main.executor": "Debug",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -61,6 +67,7 @@
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Escritorio/Nueva carpeta (2)/xd/src/main",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15820312",
     "project.structure.side.proportion": "0.2",
@@ -354,6 +361,26 @@
           <url>file://$PROJECT_DIR$/src/main/java/Ventanas/Register.java</url>
           <line>46</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java</url>
+          <line>218</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java</url>
+          <line>238</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java</url>
+          <line>233</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

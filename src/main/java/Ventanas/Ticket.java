@@ -1,26 +1,26 @@
 package Ventanas;
 
+import Dominio.Pagos;
+import Dominio.ServicioPedidos;
 import Dominio.Usuario;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Ticket extends JFrame implements ActionListener {
     private JPanel panel1;
-    private JLabel lblNumeroRetiro;
-    private JTextArea txtDetalles;
     private JButton btnvolverTicket;
     private JPanel jpTicket;
-    private JLabel lbRetiro;
-    private JLabel lblDetalles;
-    private JLabel lblAlmuerzo;
+    private JTextField textField1;
+    private JTextArea textArea1;
     private Usuario usuario;
 
     public void Pantalla() {
         setSize(500, 500);
-        setTitle("Pago");
+        setTitle("Ticket");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -31,9 +31,16 @@ public class Ticket extends JFrame implements ActionListener {
         btnvolverTicket.addActionListener(this);
     }
 
+    public Ticket(Usuario usu, String title, String numeroPedido, String pedido) throws HeadlessException {
+        super(title);
+        this.usuario = usu;
+        textArea1.setText(pedido);
+        textField1.setText(numeroPedido);
+    }
+
     public Ticket(ArrayList pagosRealizados) {
-        lblAlmuerzo.setText((String) pagosRealizados.get(0));
-        lblNumeroRetiro.setText((String) pagosRealizados.get(1));
+        textArea1.setText((String) pagosRealizados.get(0));
+        textField1.setText((String) pagosRealizados.get(1));
     }
 
     @Override
@@ -43,5 +50,9 @@ public class Ticket extends JFrame implements ActionListener {
             comprar.PantallaCompra();
             this.dispose();
         }
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }

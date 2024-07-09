@@ -1,5 +1,6 @@
 package Ventanas;
 
+import Dominio.Cliente;
 import Dominio.ServicioPedidos;
 import Dominio.Usuario;
 
@@ -46,7 +47,7 @@ public class Historial extends JFrame implements ActionListener, FocusListener {
             setVisible(false);
         }
         if (e.getSource() == btnMHistorial) {
-            String historial = servicioPedidos.mostrarHistorial(usuario);
+            String historial = servicioPedidos.verAlmuerzosComprados(new Cliente(usuario.getCorreoElectronico(), usuario.getContraseña()));
             txaMHistorial.setText(historial);
         }
     }

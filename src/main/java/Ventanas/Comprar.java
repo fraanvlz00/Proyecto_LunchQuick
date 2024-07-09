@@ -49,7 +49,7 @@ public class Comprar extends JFrame implements ActionListener, FocusListener {
             setVisible(false);
         }
         if (e.getSource() == btnComprar) {
-            MenuCompra diaSemana = new MenuCompra();
+            MenuCompra diaSemana = new MenuCompra(usuario);
             diaSemana.PantallaMenuCompra();
             setVisible(false);
         }

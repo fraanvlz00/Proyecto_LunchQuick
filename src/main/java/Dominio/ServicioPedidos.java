@@ -1,5 +1,6 @@
 package Dominio;
 
+import Ventanas.Pago;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -11,10 +12,7 @@ import org.json.JSONTokener;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.InputMismatchException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class ServicioPedidos {
 	private JsonNode rootDias;
@@ -23,6 +21,8 @@ public class ServicioPedidos {
 	private final Scanner scanner;
 	private String detallesAlmuerzoComprado;
 	private int numeroRetiro;
+
+	private Pagos pagos;
 
 	public ServicioPedidos() {
 		mapper = new ObjectMapper();
@@ -138,7 +138,7 @@ public class ServicioPedidos {
 		}
 	}
 
-	private String seleccionarDetallesMenu(Menu menu) {
+	public String seleccionarDetallesMenu(Menu menu) {
 		String almuerzoComprado = "";
 		almuerzoComprado += seleccionarOpcionDeMenu("bebestibles", menu.getBebestibles());
 		almuerzoComprado += seleccionarOpcionDeMenu("plato de fondo", menu.getPlatoDeFondo());
@@ -146,6 +146,18 @@ public class ServicioPedidos {
 		almuerzoComprado += seleccionarOpcionDeMenu("postre", menu.getPostre());
 		almuerzoComprado += seleccionarOpcionDeMenu("sopa", menu.getSopa());
 		almuerzoComprado += seleccionarOpcionDeMenu("acompañamiento", menu.getAcompañamiento());
+
+		return almuerzoComprado.endsWith(", ") ? almuerzoComprado.substring(0, almuerzoComprado.length() - 2) : almuerzoComprado;
+	}
+
+	public String seleccionarMenuDetalles(String bebestible, String fondo, String ensalada, String postre, String sopa, String pan) {
+		String almuerzoComprado = "";
+		almuerzoComprado += bebestible+ ", ";
+		almuerzoComprado += fondo+ ", ";
+		almuerzoComprado += ensalada+ ", ";
+		almuerzoComprado += postre+ ", ";
+		almuerzoComprado += sopa+ ", ";
+		almuerzoComprado += pan;
 
 		return almuerzoComprado.endsWith(", ") ? almuerzoComprado.substring(0, almuerzoComprado.length() - 2) : almuerzoComprado;
 	}
@@ -200,9 +212,29 @@ public class ServicioPedidos {
 		System.out.println("Precio total a pagar: $" + menu.getPrecio());
 	}
 
-	private void procesarCompra(Cliente cliente, Pagos pagos, String dia, String almuerzoComprado, int precio) {
+	public void procesarCompra(Cliente cliente, Pagos pagos, String dia, String almuerzoComprado, int precio) {
 		String rut = obtenerEntrada("Ingrese el RUT: ");
 		String codigoPago = obtenerEntrada("Ingrese el código de pago: ");
+
+		if (pagos.verificarPago(rut, codigoPago)) {
+			System.out.println("Pago verificado.");
+			try {
+				numeroRetiro = actualizarJsonDia(dia, cliente, almuerzoComprado);
+				System.out.println("El número de retiro de su almuerzo es: " + numeroRetiro);
+			} catch (IOException e) {
+				System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
+			}
+		} else {
+			System.out.println("Pago no verificado o no disponible, no se puede agregar el pedido. (inténtelo nuevamente)");
+		}
+	}
+
+	public void procesarDetalleCompra(Cliente cliente, Pago ventanaPago, String dia, String almuerzoComprado, int precio) {
+
+		ArrayList rutPago = ventanaPago.procesarPago();
+
+		String rut = (String) rutPago.get(0);
+		String codigoPago = (String) rutPago.get(1);
 
 		if (pagos.verificarPago(rut, codigoPago)) {
 			System.out.println("Pago verificado.");
@@ -222,7 +254,8 @@ public class ServicioPedidos {
 		return scanner.nextLine();
 	}
 
-	private int actualizarJsonDia(String dia, Cliente cliente, String almuerzoComprado) throws IOException {
+	public int actualizarJsonDia(String dia, Cliente cliente, String almuerzoComprado) throws IOException {
+
 		File jsonFileDias = new File("src/main/java/Datos/dia.json");
 		JsonNode rootDias = mapper.readTree(jsonFileDias);
 		JsonNode diaNode = rootDias.get("dia").get(dia);

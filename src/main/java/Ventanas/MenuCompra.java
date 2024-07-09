@@ -1,8 +1,10 @@
 package Ventanas;
 
 import Dominio.*;
+import Dominio.Menu;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -28,6 +30,10 @@ public class MenuCompra extends JFrame implements ActionListener, FocusListener 
     private Usuario usuario;
     private Cliente cliente;
     private Pagos pago;
+
+    public MenuCompra(Usuario usuario) throws HeadlessException {
+        this.usuario = usuario;
+    }
 
     public void PantallaMenuCompra() {
         setSize(700, 700);
@@ -129,9 +135,21 @@ public class MenuCompra extends JFrame implements ActionListener, FocusListener 
 
         }
         else if (e.getSource() ==btnPagarEco ) {
-            Pago pagar = new Pago();
+
+            ServicioPedidos pedidoActual = new ServicioPedidos();
+            String seleccionPedido = pedidoActual.seleccionarMenuDetalles((String)cbxBebestible.getSelectedItem(),
+                                                (String)cbxPfondo.getSelectedItem(),
+                                                (String)cbxEnsalada.getSelectedItem(),
+                                                (String)cbxPostre.getSelectedItem(),
+                                                (String)cbxSopa.getSelectedItem(),
+                                                (String)cbxPan.getSelectedItem());
+
+            //llamar pago
+            Pago pagar = new Pago(usuario, pago, seleccionPedido, pedidoActual, (String)cbxDia.getSelectedItem(), cliente);
             pagar.Pantalla();
             setVisible(false);
+
+
         }
     }
 

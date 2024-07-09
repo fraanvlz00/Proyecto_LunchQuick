@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Pago extends JFrame implements ActionListener, FocusListener {
@@ -22,15 +23,28 @@ public class Pago extends JFrame implements ActionListener, FocusListener {
     private JButton btnVolver;
     private JPanel jpPagos;
 
+    private String pedido;
+
     private ServicioPedidos servicioPedidos;
     private Cliente cliente;
     private Pagos pagos;
     private Usuario usuario;
 
+    private String dia;
+
     public Pago() {
         this.usuario = usuario;
         this.pagos = new Pagos();
-        this.servicioPedidos = new ServicioPedidos();
+        this.pedido = "";
+    }
+
+    public Pago(Usuario usu, Pagos pag, String pedido, ServicioPedidos servicioPedido, String dia, Cliente cli) {
+        this.pagos = new Pagos();
+        this.pedido = pedido;
+        this.servicioPedidos = servicioPedido;
+        this.dia = dia;
+        this.cliente = new Cliente(usu.getCorreoElectronico(), usu.getContraseña());
+        this.usuario = usu;
     }
 
     public void Pantalla() {
@@ -50,10 +64,19 @@ public class Pago extends JFrame implements ActionListener, FocusListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnPagar) {
-            ArrayList pagosRealizados = procesarPago();
-            if (pagosRealizados.size() != 0){
-                 Ticket ticket = new Ticket(pagosRealizados);
+            String pagosRealizados = procesarPagoDos();
+
+            try{
+               pagosRealizados = "" + servicioPedidos.actualizarJsonDia(dia, cliente, pedido);
+            }catch (Exception e1) {
+                System.out.println("Error al leer los almuerzos comprados: " + e1.getMessage());
+            }
+
+
+            if (!"".equals(pagosRealizados)){
+                 Ticket ticket = new Ticket(usuario,"TIckets",pagosRealizados, pedido);
                  ticket.Pantalla();
+                 setVisible(false);
             }
             this.dispose();
         }
@@ -63,7 +86,7 @@ public class Pago extends JFrame implements ActionListener, FocusListener {
         }
     }
 
-    private ArrayList procesarPago() {
+    public ArrayList procesarPago() {
         String rut = textField1.getText();
         String codigoBaes = new String(passwordField1.getPassword());
         ArrayList pagosRealizados = new ArrayList<>();
@@ -76,8 +99,25 @@ public class Pago extends JFrame implements ActionListener, FocusListener {
 
             pagosRealizados.add(almuerzoComprado);
             pagosRealizados.add(numeroRetiro);
-            System.out.println(almuerzoComprado);
-            System.out.println(numeroRetiro);
+
+            return pagosRealizados;
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Pago no verificado o no disponible, no se puede agregar el pedido. Inténtelo nuevamente.");
+            return pagosRealizados;
+        }
+    }
+
+    public String procesarPagoDos() {
+        String rut = textField1.getText();
+        String codigoBaes = new String(passwordField1.getPassword());
+        String pagosRealizados = "";
+
+        if (pagos.verificarPago(rut, codigoBaes)) {
+            JOptionPane.showMessageDialog(this, "Pago verificado.");
+
+            pagosRealizados = Integer.toString(servicioPedidos.getNumeroRetiro()) ;
+
             return pagosRealizados;
 
         } else {

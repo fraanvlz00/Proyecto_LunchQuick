@@ -1,5 +1,6 @@
 package Ventanas;
 
+import Dominio.Cliente;
 import Dominio.ControladorLogin;
 import Dominio.Usuario;
 
