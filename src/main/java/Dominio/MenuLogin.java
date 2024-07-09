@@ -87,7 +87,7 @@ public class MenuLogin {
     private boolean ejecutarOpcionMenuAdmin(Admin admin) {
         System.out.println("Menú de Admin:");
         System.out.println("1. Ver Almuerzos por Día");
-        System.out.println("2. Eliminar Almuerzo por Día");
+        System.out.println("2. Eliminar Almuerzo por Código de Retiro");
         System.out.println("3. Cerrar Sesión");
         System.out.print("Seleccione una opción: ");
 
@@ -98,7 +98,7 @@ public class MenuLogin {
                 verAlmuerzosPorDia(admin);
                 return true;
             case 2:
-                eliminarAlmuerzoPorDia(admin);
+                eliminarAlmuerzoPorCodigo(admin);
                 return true;
             case 3:
                 System.out.println("Cerrando sesión...");
@@ -113,9 +113,14 @@ public class MenuLogin {
         String dia = Admin.obtenerDiaValido();
         JSONArray almuerzos = admin.verAlmuerzosPorDia(dia);
         if (almuerzos != null) {
-            for (int i = 0; i < almuerzos.length(); i++) {
-                JSONObject almuerzo = almuerzos.getJSONObject(i);
-                System.out.println("Código de retiro: " + (i + 1));
+            JSONObject jsonObject = ManejarJSON.leerJSON();
+            JSONObject diaObject = jsonObject.optJSONObject("dia").optJSONObject(dia);
+            JSONObject almuerzosComprados = diaObject.getJSONObject("almuerzosComprados");
+            Iterator<String> keys = almuerzosComprados.keys();
+            while (keys.hasNext()) {
+                String key = keys.next();
+                JSONObject almuerzo = almuerzosComprados.getJSONObject(key);
+                System.out.println("Código de retiro: " + key);
                 System.out.println("Detalles: " + almuerzo.getJSONArray("detalles"));
                 System.out.println("Correo Electrónico: " + almuerzo.getString("correoElectronico"));
                 System.out.println("-----------");
@@ -125,16 +130,21 @@ public class MenuLogin {
         }
     }
 
-    private void eliminarAlmuerzoPorDia(Admin admin) {
+    private void eliminarAlmuerzoPorCodigo(Admin admin) {
         String dia = Admin.obtenerDiaValido();
         JSONArray almuerzos = admin.verAlmuerzosPorDia(dia);
         if (almuerzos != null) {
-            for (int i = 0; i < almuerzos.length(); i++) {
-                JSONObject almuerzo = almuerzos.getJSONObject(i);
-                System.out.println((i + 1) + ". Correo Electrónico: " + almuerzo.getString("correoElectronico") + " - Detalles: " + almuerzo.getJSONArray("detalles"));
+            JSONObject jsonObject = ManejarJSON.leerJSON();
+            JSONObject diaObject = jsonObject.optJSONObject("dia").optJSONObject(dia);
+            JSONObject almuerzosComprados = diaObject.getJSONObject("almuerzosComprados");
+            Iterator<String> keys = almuerzosComprados.keys();
+            while (keys.hasNext()) {
+                String key = keys.next();
+                JSONObject almuerzo = almuerzosComprados.getJSONObject(key);
+                System.out.println(key + ". Correo Electrónico: " + almuerzo.getString("correoElectronico") + " - Detalles: " + almuerzo.getJSONArray("detalles"));
             }
-            String correo = obtenerEntrada("Ingrese el correo electrónico del cliente para eliminar: ");
-            admin.eliminarAlmuerzoPorDia(dia, correo);
+            String codigoRetiro = obtenerEntrada("Ingrese el código de retiro del almuerzo para eliminar: ");
+            admin.eliminarAlmuerzoPorCodigo(dia, codigoRetiro);
         } else {
             System.out.println("No se encontraron almuerzos para el día: " + dia);
         }

@@ -49,7 +49,7 @@ public class ControladorLogin {
         return scanner.nextLine();
     }
 
-    public Usuario verificarCredenciales(String correo, String contraseña) {
+    private Usuario verificarCredenciales(String correo, String contraseña) {
         try {
             JsonNode rootUsuarios = mapper.readTree(jsonFile);
             Iterator<JsonNode> usuarios = rootUsuarios.get("usuarios").elements();
@@ -83,7 +83,7 @@ public class ControladorLogin {
         }
     }
 
-    public boolean registrarNuevoUsuario(String correo, String contraseña) {
+    private boolean registrarNuevoUsuario(String correo, String contraseña) {
         try {
             JsonNode rootUsuarios = mapper.readTree(jsonFile);
             if (correoYaRegistrado(rootUsuarios, correo)) {

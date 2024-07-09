@@ -4,17 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="fixed">
+    <list default="true" id="1ca0682e-71a4-48de-b2d7-ff0aac07be12" name="Changes" comment="commit funcionando por pantalla">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Datos/dia.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Datos/dia.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ControladorLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/MenuLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/MenuLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Comprar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Comprar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Historial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Historial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dominio/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Launcher/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Launcher/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Comprar.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Comprar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Historial.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Historial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Login.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Login.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompra.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/MenuCompra.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Pago.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Register.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Register.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ventanas/Ticket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PlatoFuerte.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ensalada.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/postre.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sopa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ufro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ufro160.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ufrofinalfinal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vasito.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="codigoPantallaPresentacion" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,7 +76,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Guis.executor": "Run",
     "Application.Login.executor": "Run",
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -64,7 +85,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "270",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "codigoConsolaPresentacion",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Escritorio/Nueva carpeta (2)/xd/src/main",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -322,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720417789909</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="commit funcionando por pantalla">
+      <option name="closed" value="true" />
+      <created>1720496835570</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1720496835570</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -330,7 +359,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="fran" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -348,7 +389,8 @@
     <MESSAGE value="commit 10 añadiendo mas ventanas juju" />
     <MESSAGE value="Ventanass FinalesFinalisimas" />
     <MESSAGE value="fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed" />
+    <MESSAGE value="commit funcionando por pantalla" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit funcionando por pantalla" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -357,31 +399,6 @@
           <properties class="java.io.FileNotFoundException" package="java.io" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Ventanas/Register.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java</url>
-          <line>218</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java</url>
-          <line>83</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java</url>
-          <line>238</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Dominio/ServicioPedidos.java</url>
-          <line>233</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

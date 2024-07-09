@@ -1,28 +1,22 @@
 package Dominio;
 
-import Ventanas.Pago;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
 
 public class ServicioPedidos {
 	private JsonNode rootDias;
 	private JsonNode rootMenus;
 	private final ObjectMapper mapper;
 	private final Scanner scanner;
-	private String detallesAlmuerzoComprado;
-	private int numeroRetiro;
-
-	private Pagos pagos;
 
 	public ServicioPedidos() {
 		mapper = new ObjectMapper();
@@ -46,39 +40,6 @@ public class ServicioPedidos {
 		}
 		return mapper.readTree(archivo);
 	}
-	public String mostrarHistorial(Usuario usuario) {
-		StringBuilder sb = new StringBuilder();
-		try (FileReader reader = new FileReader("src/main/java/Datos/dia.json")) {
-			JSONObject jsonObject = new JSONObject(new JSONTokener(reader));
-			JSONObject dia = jsonObject.getJSONObject("dia");
-
-			for (String diaKey : dia.keySet()) {
-				JSONObject diaObj = dia.getJSONObject(diaKey);
-				JSONObject almuerzosComprados = diaObj.getJSONObject("almuerzosComprados");
-
-				for (String almuerzoKey : almuerzosComprados.keySet()) {
-					JSONObject almuerzo = almuerzosComprados.getJSONObject(almuerzoKey);
-					String correo = almuerzo.getString("correoElectronico");
-
-					if (correo.equals(usuario.getCorreoElectronico())) {
-						JSONArray detalles = almuerzo.getJSONArray("detalles");
-
-						sb.append("Día: ").append(diaKey).append("\n");
-						sb.append("Almuerzo ").append(almuerzoKey).append(":\n");
-						sb.append("Correo: ").append(correo).append("\n");
-						sb.append("Detalles:\n");
-						for (int i = 0; i < detalles.length(); i++) {
-							sb.append(((JSONArray) detalles).getString(i)).append("\n");
-						}
-						sb.append("\n");
-					}
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return sb.toString();
-	}
 
 	public void comprarAlmuerzo(Cliente cliente, Pagos pagos) {
 		String dia = seleccionarDia();
@@ -87,10 +48,10 @@ public class ServicioPedidos {
 		Menu menu = obtenerMenu(dia, tipoMenu);
 		if (menu == null) return;
 
-		detallesAlmuerzoComprado = seleccionarDetallesMenu(menu);
+		String almuerzoComprado = seleccionarDetallesMenu(menu);
 
-		mostrarResumenCompra(cliente, menu, detallesAlmuerzoComprado);
-		procesarCompra(cliente, pagos, dia, detallesAlmuerzoComprado, menu.getPrecio());
+		mostrarResumenCompra(cliente, menu, almuerzoComprado);
+		procesarCompra(cliente, pagos, dia, almuerzoComprado, menu.getPrecio());
 	}
 
 	private String seleccionarDia() {
@@ -123,7 +84,7 @@ public class ServicioPedidos {
 		return tipoMenu.equals("vegetariano") || tipoMenu.equals("economico") || tipoMenu.equals("ejecutivo") || tipoMenu.equals("baes");
 	}
 
-	public Menu obtenerMenu(String dia, String tipoMenu) {
+	private Menu obtenerMenu(String dia, String tipoMenu) {
 		JsonNode menusNode = cargarMenusDelDia(dia);
 		if (menusNode == null) return null;
 		return Menu.fromJsonNode(menusNode.get(tipoMenu));
@@ -138,7 +99,7 @@ public class ServicioPedidos {
 		}
 	}
 
-	public String seleccionarDetallesMenu(Menu menu) {
+	private String seleccionarDetallesMenu(Menu menu) {
 		String almuerzoComprado = "";
 		almuerzoComprado += seleccionarOpcionDeMenu("bebestibles", menu.getBebestibles());
 		almuerzoComprado += seleccionarOpcionDeMenu("plato de fondo", menu.getPlatoDeFondo());
@@ -146,18 +107,6 @@ public class ServicioPedidos {
 		almuerzoComprado += seleccionarOpcionDeMenu("postre", menu.getPostre());
 		almuerzoComprado += seleccionarOpcionDeMenu("sopa", menu.getSopa());
 		almuerzoComprado += seleccionarOpcionDeMenu("acompañamiento", menu.getAcompañamiento());
-
-		return almuerzoComprado.endsWith(", ") ? almuerzoComprado.substring(0, almuerzoComprado.length() - 2) : almuerzoComprado;
-	}
-
-	public String seleccionarMenuDetalles(String bebestible, String fondo, String ensalada, String postre, String sopa, String pan) {
-		String almuerzoComprado = "";
-		almuerzoComprado += bebestible+ ", ";
-		almuerzoComprado += fondo+ ", ";
-		almuerzoComprado += ensalada+ ", ";
-		almuerzoComprado += postre+ ", ";
-		almuerzoComprado += sopa+ ", ";
-		almuerzoComprado += pan;
 
 		return almuerzoComprado.endsWith(", ") ? almuerzoComprado.substring(0, almuerzoComprado.length() - 2) : almuerzoComprado;
 	}
@@ -212,35 +161,15 @@ public class ServicioPedidos {
 		System.out.println("Precio total a pagar: $" + menu.getPrecio());
 	}
 
-	public void procesarCompra(Cliente cliente, Pagos pagos, String dia, String almuerzoComprado, int precio) {
+	private void procesarCompra(Cliente cliente, Pagos pagos, String dia, String almuerzoComprado, int precio) {
 		String rut = obtenerEntrada("Ingrese el RUT: ");
 		String codigoPago = obtenerEntrada("Ingrese el código de pago: ");
 
 		if (pagos.verificarPago(rut, codigoPago)) {
 			System.out.println("Pago verificado.");
 			try {
-				numeroRetiro = actualizarJsonDia(dia, cliente, almuerzoComprado);
-				System.out.println("El número de retiro de su almuerzo es: " + numeroRetiro);
-			} catch (IOException e) {
-				System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
-			}
-		} else {
-			System.out.println("Pago no verificado o no disponible, no se puede agregar el pedido. (inténtelo nuevamente)");
-		}
-	}
-
-	public void procesarDetalleCompra(Cliente cliente, Pago ventanaPago, String dia, String almuerzoComprado, int precio) {
-
-		ArrayList rutPago = ventanaPago.procesarPago();
-
-		String rut = (String) rutPago.get(0);
-		String codigoPago = (String) rutPago.get(1);
-
-		if (pagos.verificarPago(rut, codigoPago)) {
-			System.out.println("Pago verificado.");
-			try {
-				numeroRetiro = actualizarJsonDia(dia, cliente, almuerzoComprado);
-				System.out.println("El número de retiro de su almuerzo es: " + numeroRetiro);
+				int numeroAsignado = actualizarJsonDia(dia, cliente, almuerzoComprado);
+				System.out.println("El número de retiro de su almuerzo es: " + numeroAsignado);
 			} catch (IOException e) {
 				System.out.println("Error al actualizar los archivos JSON: " + e.getMessage());
 			}
@@ -254,8 +183,7 @@ public class ServicioPedidos {
 		return scanner.nextLine();
 	}
 
-	public int actualizarJsonDia(String dia, Cliente cliente, String almuerzoComprado) throws IOException {
-
+	private int actualizarJsonDia(String dia, Cliente cliente, String almuerzoComprado) throws IOException {
 		File jsonFileDias = new File("src/main/java/Datos/dia.json");
 		JsonNode rootDias = mapper.readTree(jsonFileDias);
 		JsonNode diaNode = rootDias.get("dia").get(dia);
@@ -307,8 +235,7 @@ public class ServicioPedidos {
 		mapper.writerWithDefaultPrettyPrinter().writeValue(archivo, root);
 	}
 
-	public String verAlmuerzosComprados(Cliente cliente) {
-		StringBuilder historial = new StringBuilder();
+	public void verAlmuerzosComprados(Cliente cliente) {
 		try {
 			// Recargar el archivo JSON para asegurar que los datos más recientes se lean
 			rootDias = cargarArchivoJson("src/main/java/Datos/dia.json");
@@ -322,10 +249,10 @@ public class ServicioPedidos {
 						Map.Entry<String, JsonNode> almuerzoEntry = itAlmuerzos.next();
 						JsonNode almuerzoNode = almuerzoEntry.getValue();
 						if (almuerzoNode.get("correoElectronico").asText().equals(cliente.getCorreoElectronico())) {
-							historial.append("Día: ").append(dia).append("\n");
-							historial.append("Código de retiro: ").append(almuerzoEntry.getKey()).append("\n");
-							historial.append("Detalles: ").append(almuerzoNode.get("detalles")).append("\n");
-							historial.append("-----------\n");
+							System.out.println("Día: " + dia);
+							System.out.println("Código de retiro: " + almuerzoEntry.getKey());
+							System.out.println("Detalles: " + almuerzoNode.get("detalles"));
+							System.out.println("-----------");
 						}
 					}
 				}
@@ -333,15 +260,5 @@ public class ServicioPedidos {
 		} catch (Exception e) {
 			System.out.println("Error al leer los almuerzos comprados: " + e.getMessage());
 		}
-		return historial.toString();
-	}
-
-	public String getDetallesAlmuerzoComprado() {
-		return detallesAlmuerzoComprado;
-	}
-
-	public int getNumeroRetiro() {
-		return numeroRetiro;
 	}
 }
-
